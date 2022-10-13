@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+}
+
+<header class="row">
+
+    <h1 class="text-center mt-2 mb-2"><strong>Menu</strong></h1>
+    <div class="col-md-12">
+        <hr class="bg-dark" />
+    </div>
+</header>
+
+<main class="">
+    <div class="row">
+        <div class="offset-md-2 col-md-4 col-10 mt-3 ">
+            <div class="card bg-dark text-white" style="width: 20rem;">
+                <img src="https://picsum.photos/370/370" class="card-img rounded" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title text-center bg-info p-3 rounded">
+                        @Html.ActionLink("Quartos Disponiveis", "VisualizarQuartos", "Home", new { area = "" }, new { @class = "text-center" })
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-10 mt-3">
+            <a asp-area="" asp-controller="Terminal" asp-action="">
+                <div class="card bg-dark text-white" style="width: 20rem;">
+                    <img src="https://picsum.photos/370/371" class="card-img rounded" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-center bg-info p-3 rounded">
+                            @Html.ActionLink("Eventos Disponiveis", "VisualizarEventos", "Home", new { area = "" }, new { @class = "text-center" })
+                        </h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="offset-md-2 col-md-4 col-10 mt-3 ">
+            <div class="card bg-dark text-white" style="width: 20rem;">
+                <img src="https://picsum.photos/371/370" class="card-img rounded" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title text-center bg-danger p-3 rounded">
+                        @Html.ActionLink("Checkin", "Checkin", "Home", new { area = "" }, new { @class = "text-center" })
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-10 mt-3 mb-1 ">
+            <div class="card bg-dark text-white" style="width: 20rem;">
+                <img src="https://picsum.photos/370/372" class="card-img rounded" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title text-center bg-danger p-3 rounded">
+                        @Html.ActionLink("Checkout", "Checkout", "Home", new { area = "" }, new { @class = "text-center" })
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="border-top mt-4 footer text-muted">
+    <div class="row">
+        <div class="col-md-12 mt-2 mb-2">
+            <p class="text-center">&copy; 2022 - Easy Hosts - </p> @Html.ActionLink("Tela Inicial", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-info p-2" })
+
+        </div>
+    </div>
+</footer>
+
