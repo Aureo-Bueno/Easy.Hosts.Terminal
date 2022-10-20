@@ -8,9 +8,19 @@ namespace EasyHosts.Terminal
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrap-css").Include(
-                     "~/Content/bootstrap-css/bootstrap.css",
-                     "~/Content/bootstrap-css/bootstrap-grid.css"));
+                     "~/Content/bootstrap-css/bootstrap.css"));
+
+          
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap-reboot-css").Include(
+                     "~/Content/bootstrap-css/bootstrap-reboot.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap-utilities-css").Include(
+                     "~/Content/bootstrap-css/bootstrap-utilities.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap-icons").Include(
                      "~/Content/bootstrap-icons/bootstrap-icons.css",
@@ -19,16 +29,8 @@ namespace EasyHosts.Terminal
                      "~/Content/bootstrap-icons/fonts/bootstrap-icons.woff",
                      "~/Content/bootstrap-icons/fonts/bootstrap-icons.woff2"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap.min.js",
-                      "~/Scripts/bootstrap.bundle.js",
-                      "~/Scripts/bootstrap.esm.js"));
+       
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                      "~/Scripts/jquery-3.4.1.js"));
-
-           
         }
     }
 }

@@ -14,6 +14,8 @@ namespace EasyHosts.Terminal.Models
         public DbSet<Bedroom> Bedroom { get; set; }
 
         public DbSet<TypeBedroom> TypeBedroom { get; set; }
+
+        public DbSet<Event> Event { get; set; }
         protected override void OnModelCreating(DbModelBuilder mb)
         {
             var bedroom = mb.Entity<Bedroom>();
@@ -31,6 +33,17 @@ namespace EasyHosts.Terminal.Models
             typebedroom.Property(x => x.AmountOfPeople).HasColumnName("AMOUNT_OF_PEOPLE");
             typebedroom.Property(x => x.AmountOfBed).HasColumnName("AMOUNT_OF_BED");
             typebedroom.Property(x => x.ApartmentAmenities).HasColumnName("APARTMENT_AMENITIES");
+
+            var eventBd = mb.Entity<Event>();
+            eventBd.ToTable("TB_EVENT");
+            eventBd.Property(x => x.Id).HasColumnName("ID");
+            eventBd.Property(x => x.NameEvent).HasColumnName("NAME_EVENT");
+            eventBd.Property(x => x.Organizer).HasColumnName("ORGANIZER");
+            eventBd.Property(x => x.DateEvent).HasColumnName("DATE_EVENT");
+            eventBd.Property(x => x.EventsPlace).HasColumnName("EVENTS_PLACE");
+            eventBd.Property(x => x.DescriptionEvent).HasColumnName("DESCRIPTION_EVENT");
+            eventBd.Property(x => x.Attractions).HasColumnName("ATTRACTIONS");
+            eventBd.Property(x => x.TypeEvent).HasColumnName("TYPE_EVENT");
         }
     }
 }

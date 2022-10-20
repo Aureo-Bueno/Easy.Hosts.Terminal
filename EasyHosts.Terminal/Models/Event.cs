@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyHosts.Terminal.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,14 +29,6 @@ namespace EasyHosts.Terminal.Models
         [MaxLength(100, ErrorMessage = "Atracao muito extensa!")]
         public string Attractions { get; set; }
 
-        [EnumDataType(typeof(TypeStatus))]
-        [Required]
-        public TypeStatus TypeEvent { get; set; }
-        public enum TypeStatus
-        {
-            SHOW = 0,
-            COMEDIA = 1,
-            EVENTOSRELIGIOSOS = 2
-        }
+        public EventType TypeEvent { get; set; }
     }
 }
