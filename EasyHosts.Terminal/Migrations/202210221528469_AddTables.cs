@@ -3,7 +3,7 @@ namespace EasyHosts.Terminal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddTablesBedroomAndTypeBedroomAndEvent : DbMigration
+    public partial class AddTables : DbMigration
     {
         public override void Up()
         {
@@ -34,6 +34,46 @@ namespace EasyHosts.Terminal.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
+                "dbo.TB_BOOKING",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        CODE_BOOKING = c.String(),
+                        USER_ID = c.Int(nullable: false),
+                        BEDROOM_ID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.TB_BEDROOM", t => t.BEDROOM_ID, cascadeDelete: true)
+                .ForeignKey("dbo.TB_USER", t => t.USER_ID, cascadeDelete: true)
+                .Index(t => t.USER_ID)
+                .Index(t => t.BEDROOM_ID);
+            
+            CreateTable(
+                "dbo.TB_USER",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        EMAIL = c.String(),
+                        PASSWORD = c.String(),
+                        CONFIRM_PASSWORD = c.String(),
+                        STATUS = c.Int(nullable: false),
+                        CPF = c.String(),
+                        PERFIL_ID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.TB_PERFIL", t => t.PERFIL_ID, cascadeDelete: true)
+                .Index(t => t.PERFIL_ID);
+            
+            CreateTable(
+                "dbo.TB_PERFIL",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        DESCRIPTION = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.TB_EVENT",
                 c => new
                     {
@@ -52,9 +92,18 @@ namespace EasyHosts.Terminal.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.TB_BOOKING", "USER_ID", "dbo.TB_USER");
+            DropForeignKey("dbo.TB_USER", "PERFIL_ID", "dbo.TB_PERFIL");
+            DropForeignKey("dbo.TB_BOOKING", "BEDROOM_ID", "dbo.TB_BEDROOM");
             DropForeignKey("dbo.TB_BEDROOM", "TYPE_BEDROOM", "dbo.TB_TYPE_BEDROOM");
+            DropIndex("dbo.TB_USER", new[] { "PERFIL_ID" });
+            DropIndex("dbo.TB_BOOKING", new[] { "BEDROOM_ID" });
+            DropIndex("dbo.TB_BOOKING", new[] { "USER_ID" });
             DropIndex("dbo.TB_BEDROOM", new[] { "TYPE_BEDROOM" });
             DropTable("dbo.TB_EVENT");
+            DropTable("dbo.TB_PERFIL");
+            DropTable("dbo.TB_USER");
+            DropTable("dbo.TB_BOOKING");
             DropTable("dbo.TB_TYPE_BEDROOM");
             DropTable("dbo.TB_BEDROOM");
         }

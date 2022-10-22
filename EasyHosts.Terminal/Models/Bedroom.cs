@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyHosts.Terminal.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,17 +23,8 @@ namespace EasyHosts.Terminal.Models
         [MaxLength(255)]
         public string Description { get; set; }
 
-        [EnumDataType(typeof(TypeStatus))]
         [Required]
-        public TypeStatus Status { get; set; }
-        public enum TypeStatus
-        {
-            disponivel = 0,
-            ocupado = 1,
-            manutencao = 2,
-            reservado = 3
-        }
-
+        public BedroomStatus Status { get; set; }
         public int TypeBedroomId { get; set; }
         public virtual TypeBedroom TypeBedroom { get; set; }
     }

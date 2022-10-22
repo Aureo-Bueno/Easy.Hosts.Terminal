@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace EasyHosts.Terminal.Models.Enums
+{
+    public enum BedroomStatus : int
+    {
+        Disponivel = 0,
+        Ocupado = 1,
+        Manutencao = 2,
+        Reservado = 3
+    }
+}

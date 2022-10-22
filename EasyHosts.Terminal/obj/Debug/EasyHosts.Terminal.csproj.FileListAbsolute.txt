@@ -233,5 +233,6 @@ C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\Eas
 C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.CopyComplete
 C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
-C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablesBedroomAndTypeBedroomAndEvent.resources
+C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTables.resources
 C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.GenerateResource.cache
+C:\Users\Aureo Bueno\Desktop\EasyHosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablePayment.resources

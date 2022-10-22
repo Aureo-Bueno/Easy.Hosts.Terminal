@@ -208,25 +208,32 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\Function.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TerminalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210201852562_AddTablesBedroomAndTypeBedroomAndEvent.cs" />
-    <Compile Include="Migrations\202210201852562_AddTablesBedroomAndTypeBedroomAndEvent.Designer.cs">
-      <DependentUpon>202210201852562_AddTablesBedroomAndTypeBedroomAndEvent.cs</DependentUpon>
+    <Compile Include="Migrations\202210221528469_AddTables.cs" />
+    <Compile Include="Migrations\202210221528469_AddTables.Designer.cs">
+      <DependentUpon>202210221528469_AddTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210221635274_AddTablePayment.cs" />
+    <Compile Include="Migrations\202210221635274_AddTablePayment.Designer.cs">
+      <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bedroom.cs" />
+    <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\Enums\BedroomStatus.cs" />
     <Compile Include="Models\Enums\EventType.cs" />
+    <Compile Include="Models\Enums\PaymentType.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\TypeBedroom.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModels\ErrorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\BedroomService.cs" />
     <Compile Include="Service\Exceptions\DbConcurrencyException.cs" />
     <Compile Include="Service\Exceptions\IntegrityException.cs" />
     <Compile Include="Service\Exceptions\NotFoundException.cs" />
@@ -294,7 +301,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Uploads\Logo\Logo.jpeg" />
+    <Content Include="Uploads\Logo\EasyHosts.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -306,10 +313,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Quartos.cshtml" />
-    <Content Include="Views\Home\Menu.cshtml" />
-    <Content Include="Views\Home\Eventos.cshtml" />
+    <Content Include="Views\Terminal\Index.cshtml" />
+    <Content Include="Views\Terminal\Quartos.cshtml" />
+    <Content Include="Views\Terminal\Menu.cshtml" />
+    <Content Include="Views\Terminal\Eventos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,8 +327,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210201852562_AddTablesBedroomAndTypeBedroomAndEvent.resx">
-      <DependentUpon>202210201852562_AddTablesBedroomAndTypeBedroomAndEvent.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202210221528469_AddTables.resx">
+      <DependentUpon>202210221528469_AddTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210221635274_AddTablePayment.resx">
+      <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

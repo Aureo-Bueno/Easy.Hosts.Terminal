@@ -1,21 +1,17 @@
 ﻿using EasyHosts.Terminal.Models;
 using EasyHosts.Terminal.Models.ViewModels;
-using EasyHosts.Terminal.Service;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EasyHosts.Terminal.Controllers
 {
-    public class HomeController : Controller
+    public class TerminalController : Controller
     {
-        private Context context = new Context();
+        private Context _context = new Context();
 
         public async Task<ActionResult> Index()
         {
@@ -29,7 +25,7 @@ namespace EasyHosts.Terminal.Controllers
 
         public async Task<ActionResult> Quartos()
         {
-            var listBedroom = await context.Bedroom.ToListAsync();
+            var listBedroom = await _context.Bedroom.ToListAsync();
             return View(listBedroom);
         }
 
@@ -40,9 +36,9 @@ namespace EasyHosts.Terminal.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 ViewBag.Search = searchString;
-                var bedrooms = context.Bedroom.Include(c => c.TypeBedroom)
-                                              .Include(e => e.TypeBedroom.AmountOfBed)
-                                              .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
+                var bedrooms = _context.Bedroom.Include(c => c.TypeBedroom)
+                                               .Include(e => e.TypeBedroom.AmountOfBed)
+                                               .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
                 await bedrooms.ToListAsync();
                 return View("Index",bedrooms);
@@ -55,7 +51,7 @@ namespace EasyHosts.Terminal.Controllers
 
         public async Task<ActionResult> Eventos()
         {
-            var listEvents = await context.Event.ToListAsync();
+            var listEvents = await _context.Event.ToListAsync();
             return View(listEvents);
         }
 
@@ -65,7 +61,8 @@ namespace EasyHosts.Terminal.Controllers
             {
                 return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
             }
-            var eventDetail= await context.Event.FirstOrDefaultAsync(f => f.Id == id);
+
+            var eventDetail= await _context.Event.FirstOrDefaultAsync(f => f.Id == id);
 
             if (eventDetail == null)
             {
@@ -75,6 +72,8 @@ namespace EasyHosts.Terminal.Controllers
             return View(eventDetail);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkin()
         {
             return View();
