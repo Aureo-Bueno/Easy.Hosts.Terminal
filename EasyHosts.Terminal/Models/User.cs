@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,8 @@ namespace EasyHosts.Terminal.Models
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public int Status { get; set; }
+
+        [DisplayName("CPF do Usuário")]
         public string Cpf { get; set; }
 
         public int PerfilId { get; set; }

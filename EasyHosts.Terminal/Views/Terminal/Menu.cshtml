@@ -1,10 +1,9 @@
-﻿
+﻿@model EasyHosts.Terminal.Models.ViewModels.CheckinCheckoutViewModel
 @{
     ViewBag.Title = "Menu";
 }
 
 <header class="row">
-
     <h1 class="text-center mt-2 mb-2"><strong>Menu</strong></h1>
     <div class="col-md-12">
         <hr class="bg-dark" />
@@ -72,19 +71,30 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    @*<div class="form-group">
-                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Checkin.Booking.CodeBooking, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Checkin.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkin.Booking.CodeBooking, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Checkin.User.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Checkin.User.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkin.User.Cpf, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Checkin" class="btn btn-success" />
+                        </div>
+                    </div>
                 }
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Checkin</button>
             </div>
         </div>
     </div>

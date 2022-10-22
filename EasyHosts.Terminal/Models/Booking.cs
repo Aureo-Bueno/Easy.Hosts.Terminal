@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EasyHosts.Terminal.Models
@@ -7,6 +8,8 @@ namespace EasyHosts.Terminal.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [DisplayName("Código da Reserva")]
         public string CodeBooking { get; set; }
         public int UserId { get; set; }
 
