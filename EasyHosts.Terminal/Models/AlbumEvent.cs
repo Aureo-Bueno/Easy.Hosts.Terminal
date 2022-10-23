@@ -6,13 +6,13 @@ using System.Web;
 
 namespace EasyHosts.Terminal.Models
 {
-    public class Perfil
+    public class AlbumEvent
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(255)]
-        [Display(Name = "Descrição")]
-        public string Description { get; set; }
+        public int EventId { get; set; }
+        public virtual Event Event { get; set; }
+        [MaxLength(100)]
+        public string Picture { get; set; }
     }
 }

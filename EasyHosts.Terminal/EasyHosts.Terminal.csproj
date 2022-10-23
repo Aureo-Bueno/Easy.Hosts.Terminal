@@ -220,7 +220,16 @@
     <Compile Include="Migrations\202210221635274_AddTablePayment.Designer.cs">
       <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210231432383_AddTablesProducts.cs" />
+    <Compile Include="Migrations\202210231432383_AddTablesProducts.Designer.cs">
+      <DependentUpon>202210231432383_AddTablesProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210231438333_AddColumnNameTableUser.cs" />
+    <Compile Include="Migrations\202210231438333_AddColumnNameTableUser.Designer.cs">
+      <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AlbumEvent.cs" />
     <Compile Include="Models\Bedroom.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Context.cs" />
@@ -230,6 +239,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Perfil.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\TypeBedroom.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModels\CheckinCheckoutViewModel.cs" />
@@ -335,6 +345,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210221635274_AddTablePayment.resx">
       <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210231432383_AddTablesProducts.resx">
+      <DependentUpon>202210231432383_AddTablesProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210231438333_AddColumnNameTableUser.resx">
+      <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

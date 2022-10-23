@@ -6,13 +6,13 @@ using System.Web;
 
 namespace EasyHosts.Terminal.Models
 {
-    public class Perfil
+    public class Product
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(255)]
-        [Display(Name = "Descrição")]
-        public string Description { get; set; }
+
+        public string Name { get; set; }
+
+        public decimal Value { get; set; }
     }
 }

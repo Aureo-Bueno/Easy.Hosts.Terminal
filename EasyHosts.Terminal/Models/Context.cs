@@ -11,6 +11,8 @@ namespace EasyHosts.Terminal.Models
         public Context() : base(nameOrConnectionString: "EasyHostsBd")
         { }
 
+        public DbSet<AlbumEvent> AlbumEvent { get; set; }
+
         public DbSet<Bedroom> Bedroom { get; set; }
 
         public DbSet<Booking> Booking { get; set; }
@@ -21,12 +23,20 @@ namespace EasyHosts.Terminal.Models
 
         public DbSet<Perfil> Perfil { get; set; }
 
+        public DbSet<Product> Product { get; set; }
+
         public DbSet<TypeBedroom> TypeBedroom { get; set; }
 
         public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
+            var albEvent = mb.Entity<AlbumEvent>();
+            albEvent.ToTable("TB_ALBUM_EVENT");
+            albEvent.Property(x => x.Id).HasColumnName("ID");
+            albEvent.Property(x => x.EventId).HasColumnName("EVENT_ID");
+            albEvent.Property(x => x.Picture).HasColumnName("PICTURE");
+
             var bedroom = mb.Entity<Bedroom>();
             bedroom.ToTable("TB_BEDROOM");
             bedroom.Property(x => x.Id).HasColumnName("ID");
@@ -72,6 +82,12 @@ namespace EasyHosts.Terminal.Models
             perfil.Property(x => x.Id).HasColumnName("ID");
             perfil.Property(x => x.Description).HasColumnName("DESCRIPTION");
 
+            var product = mb.Entity<Product>();
+            product.ToTable("TB_PRODUCT");
+            product.Property(x => x.Id).HasColumnName("ID");
+            product.Property(x => x.Name).HasColumnName("NAME_PRODUCT");
+            product.Property(x => x.Value).HasColumnName("VALUE");
+
             var typebedroom = mb.Entity<TypeBedroom>();
             typebedroom.ToTable("TB_TYPE_BEDROOM");
             typebedroom.Property(x => x.Id).HasColumnName("ID");
@@ -82,6 +98,7 @@ namespace EasyHosts.Terminal.Models
             var user = mb.Entity<User>();
             user.ToTable("TB_USER");
             user.Property(x => x.Id).HasColumnName("ID");
+            user.Property(x => x.Name).HasColumnName("NAME");
             user.Property(x => x.Email).HasColumnName("EMAIL");
             user.Property(x => x.Password).HasColumnName("PASSWORD");
             user.Property(x => x.ConfirmPassword).HasColumnName("CONFIRM_PASSWORD");
