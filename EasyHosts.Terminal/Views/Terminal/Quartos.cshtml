@@ -3,60 +3,39 @@
     ViewBag.Title = "Galeria de Quartos";
 }
 
-<header class="row">
-    <div class="col-lg-12 col-md-12 col-12 mt-5">
-        <h1 class="text-center">@ViewBag.Title</h1>
+<header>
+    <div class="mt-5">
+        <h1 class="text-center fw-bold">@ViewBag.Title</h1>
         <hr class="bg-black" />
-
     </div>
-    <div class="col-lg-12 col-md-12 col-12 mt-5">
-        <form asp-action="Search">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="row">
-                <div class="col">
-                    <span class="text-danger"></span>
-                    @using (Html.BeginForm("Pesquisar", "Home", null, FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    @*@Html.TextBox("SearchString")*@
-                                    <label for="Pesquisar-Quarto" class="form-label">Pesquisar</label>
-                                    <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control" value="@ViewBag.Search" />
-                                    <input type="submit" value="Pesquisar" class="btn btn-primary" />
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="col">
-                </div>
+
+    <form asp-action="Search">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <span class="text-danger"></span>
+        @using (Html.BeginForm("Pesquisar", "Home", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="d-flex justify-content-around">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*@Html.TextBox("SearchString")*@
+                <label for="Pesquisar-Quarto" class="form-label my-auto">Pesquisar</label>
+                <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control w-50" value="@ViewBag.Search" />
+                <input type="submit" value="Pesquisar" class="btn btn-primary" />
             </div>
-        </form>
+        }
+    </form>
 
-    </div>
-
-    <div class="col-lg-4 col-md-4 col-6 mt-5">
+    <div class="d-flex justify-content-between mt-5">
         <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
-
-    </div>
-    <div class="col-lg-4 col-md-4 col-6 mt-5">
         <input type="submit" class="btn btn-outline-info p-3" value="Populares" />
-
-    </div>
-    <div class="col-lg-4 col-md-4 col-12 mt-5">
         <input type="submit" class="btn btn-outline-info p-3" value="Melhores Valores" />
-
     </div>
 </header>
 
-
 <main>
-    <section class="row section-gallery mt-4">
-        <div class="col-md-12 col-12 mt-3 mb-3">
-            <h1><strong>Galeria de Quartos</strong> </h1>
+    <section class="row section-gallery text-center">
+        <div class="title my-5">
+            <h1>Nossas Opções</h1>
         </div>
         @if (Model.Count() == 0)
         {
@@ -70,18 +49,16 @@
                     @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
                 </div>
                 <div class="card-footer text-muted">
-
                     Atualizado em: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
                 </div>
             </div>
-
         }
         else
         {
             foreach (var item in Model)
             {
-                <div class="col-lg-2 col-md-2 col-sm-12">
-                    <div class="card rounded-3" style="width: 16rem;">
+                <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                    <div class="card rounded-3 m-2" style="width: 16rem;">
                         <img src="https://picsum.photos/300/330" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -99,7 +76,7 @@
                 </div>
             }
         }
-        </section>
+    </section>
 </main>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

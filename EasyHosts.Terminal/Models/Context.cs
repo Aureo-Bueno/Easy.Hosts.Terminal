@@ -63,6 +63,7 @@ namespace EasyHosts.Terminal.Models
             eventBd.Property(x => x.Organizer).HasColumnName("ORGANIZER");
             eventBd.Property(x => x.DateEvent).HasColumnName("DATE_EVENT");
             eventBd.Property(x => x.EventsPlace).HasColumnName("EVENTS_PLACE");
+            eventBd.Property(x => x.Picture).HasColumnName("PICTURE");
             eventBd.Property(x => x.DescriptionEvent).HasColumnName("DESCRIPTION_EVENT");
             eventBd.Property(x => x.Attractions).HasColumnName("ATTRACTIONS");
             eventBd.Property(x => x.TypeEvent).HasColumnName("TYPE_EVENT");

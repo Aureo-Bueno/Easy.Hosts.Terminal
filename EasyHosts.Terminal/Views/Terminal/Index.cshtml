@@ -3,11 +3,9 @@
     ViewBag.Title = "Index";
 }
 
-<header class="row">
-    <div class="col-md-12">
-        <h1 class="text-lg-center mt-1"><strong>Easy Hosts</strong></h1>
-    </div>
-    <p class="text-lg-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+<header>
+    <h1 class="text-center mt-1 fw-bold">Easy Hosts</h1>
+    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
 </header>
 
 
@@ -40,11 +38,10 @@
     </div>
 </main>
 
-
-
-<footer class="row d-flex">
-    <div class="col-md-12 text-center mt-3">
-        @Html.ActionLink(">", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-dark p-2 rounded-2" })
+<div class="navigation">
+    <div class="text-center mt-3">
+        @*@Html.ActionLink(">", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-dark p-2 rounded-2" })*@
+        <a href="@Url.Action("Menu", "Terminal", new { area = "" })"><i class="text-dark bi bi-arrow-right-circle-fill fs-1"></i></a>
     </div>
-</footer>
+</div>
 

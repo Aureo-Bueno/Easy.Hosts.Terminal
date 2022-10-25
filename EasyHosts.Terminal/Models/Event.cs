@@ -23,6 +23,10 @@ namespace EasyHosts.Terminal.Models
         [MaxLength(150, ErrorMessage = "Local muito extenso!")]
         public string EventsPlace { get; set; }
 
+        [MaxLength(100)]
+        public string Picture { get; set; }
+        public ICollection<AlbumEvent> AlbumEvent { get; set; }
+
         [MaxLength(100, ErrorMessage = "Descricao muito extensa!")]
         public string DescriptionEvent { get; set; }
 
