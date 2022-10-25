@@ -23,13 +23,32 @@ namespace EasyHosts.Terminal.Controllers
             return View();
         }
 
+        //GET: Terminal/Bedroom
         public async Task<ActionResult> Quartos()
         {
             var listBedroom = await _context.Bedroom.ToListAsync();
             return View(listBedroom);
         }
 
+        // GET: Terminal/DetailsBedroom/id
+        public async Task<ActionResult> DetalhesQuarto(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
+            }
+
+            var bedroomDetails = await _context.Bedroom.FindAsync(id);
+
+            if (bedroomDetails == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
+            }
+            return View(bedroomDetails);
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Pesquisar(FormCollection fc, string searchString)
         {
             ViewBag.Search = "";

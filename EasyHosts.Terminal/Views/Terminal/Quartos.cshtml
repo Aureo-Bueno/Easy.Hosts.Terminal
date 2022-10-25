@@ -9,24 +9,33 @@
         <hr class="bg-black" />
     </div>
 
-    <form asp-action="Search">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <span class="text-danger"></span>
-        @using (Html.BeginForm("Pesquisar", "Home", null, FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            <div class="d-flex justify-content-around">
+    @using (Html.BeginForm("Pesquisar", "Terminal", null, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @*@Html.TextBox("SearchString")*@
-                <label for="Pesquisar-Quarto" class="form-label my-auto">Pesquisar</label>
-                <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control w-50" value="@ViewBag.Search" />
-                <input type="submit" value="Pesquisar" class="btn btn-primary" />
+                <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control" value="@ViewBag.Search" />
             </div>
-        }
-    </form>
+            <div class="col">
+                <input type="submit" value="Pesquisar" class="btn btn-primary" />
+
+            </div>
+
+        </div>
+    }
 
     <div class="d-flex justify-content-between mt-5">
-        <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
+
+        @using (Html.BeginForm("Recomendados", "Terminal", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
+
+        }
+
         <input type="submit" class="btn btn-outline-info p-3" value="Populares" />
         <input type="submit" class="btn btn-outline-info p-3" value="Melhores Valores" />
     </div>
@@ -41,11 +50,10 @@
         {
             <div class="card text-center shadow bg-body rounded">
                 <div class="card-header">
-                    Nao ha quartos registrados
+                    No momento não temos eventos em nosso sistema!
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">No Momento nao temos quartos em nosso sistema!</h5>
-                    <p class="card-text">Volte para o menu de opcoes</p>
+                    <p class="card-text">Volte para o menu de opções.</p>
                     @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
                 </div>
                 <div class="card-footer text-muted">
@@ -67,9 +75,9 @@
                             <p class="card-text">Descrição: @Html.DisplayFor(modelItem => item.Description)</p>
                         </div>
                         <div class="card-body">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <a class="btn btn-primary" title="Detalhes"  href="@Url.Action("DetalhesQuarto", "Terminal", new { id = item.Id })">
                                 Visualizar Quarto
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -78,22 +86,3 @@
         }
     </section>
 </main>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-

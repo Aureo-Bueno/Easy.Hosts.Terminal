@@ -1,0 +1,47 @@
+﻿@model EasyHosts.Terminal.Models.Bedroom
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div class="card mb-3">
+    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../../../assets/img/icons/spot-illustrations/corner-4.png);">
+    </div>
+
+    <div class="card-body position-relative">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Detalhes do Quarto</h3>
+                <p class="mb-0">Visualização dos detalhes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="row flex-between-end">
+            <div class="col-auto align-self-center">
+                <h5 class="mb-0">Informações</h5>
+            </div>
+        </div>
+    </div>
+    <div class="card-body bg-light">
+        <div class="tab-content">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayFor(model => model.NameBedroom)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+            </dl>
+            <div>
+                @Html.ActionLink("Voltar", "Quartos", "Terminal", new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+</div>
+

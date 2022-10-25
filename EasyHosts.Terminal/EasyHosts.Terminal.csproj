@@ -330,6 +330,7 @@
     <Content Include="Views\Terminal\Quartos.cshtml" />
     <Content Include="Views\Terminal\Menu.cshtml" />
     <Content Include="Views\Terminal\Eventos.cshtml" />
+    <Content Include="Views\Terminal\DetalhesQuarto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
