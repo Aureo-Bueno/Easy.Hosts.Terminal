@@ -512,7 +512,6 @@ D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\System.Web.WebPages.Deployment.xml
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\System.Web.WebPages.Razor.xml
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\Newtonsoft.Json.xml
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\Antlr3.Runtime.pdb
-D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.AssemblyReference.cache
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTables.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablePayment.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablesProducts.resources
@@ -522,3 +521,4 @@ D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.Co
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.CopyComplete
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
+D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.AssemblyReference.cache

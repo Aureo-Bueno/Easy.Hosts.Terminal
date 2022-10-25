@@ -70,12 +70,13 @@
                         <img src="https://picsum.photos/300/330" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">
-                                @Html.DisplayFor(modelItem => item.NameBedroom)
+                                Nome do quarto:@Html.DisplayFor(modelItem => item.NameBedroom)
                             </h5>
-                            <p class="card-text">Descrição: @Html.DisplayFor(modelItem => item.Description)</p>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-primary" title="Detalhes"  href="@Url.Action("DetalhesQuarto", "Terminal", new { id = item.Id })">
+                            <p class="card-text">Descrição: @Html.DisplayFor(modelItem => item.Description)</p>
+
+                            <a class="btn btn-primary" title="Detalhes" href="@Url.Action("DetalhesQuarto", "Terminal", new { id = item.Id })">
                                 Visualizar Quarto
                             </a>
 

@@ -38,7 +38,7 @@
             <div class="card bg-dark text-white" style="width: 20rem;">
                 <img src="https://picsum.photos/371/370" class="card-img rounded" alt="...">
                 <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-danger p-3 rounded">
+                    <h5 class="card-title text-center bg-info p-3 rounded">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Checkin
                         </button>
@@ -67,7 +67,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Checkin", "Terminal", null, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-group">

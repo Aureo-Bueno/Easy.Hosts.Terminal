@@ -15,7 +15,7 @@ namespace EasyHosts.Terminal.Models.ViewModels
         public Booking Booking{ get; set; }
 
         [DisplayName("Usuario")]
-        public int UsergId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
     }
 }

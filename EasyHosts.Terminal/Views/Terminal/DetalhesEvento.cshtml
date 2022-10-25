@@ -1,16 +1,17 @@
-﻿@model EasyHosts.Terminal.Models.Bedroom
+﻿@model EasyHosts.Terminal.Models.Event
 @{
-    ViewBag.Title = "Detalhes do Quarto";
+    ViewBag.Title = "Detalhes do Evento";
 }
 
-<div class="card mb-3">
-    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../../../assets/img/icons/spot-illustrations/corner-4.png);">
-    </div>
+<h2>DetalhesEvento</h2>
 
+
+
+<div class="card mb-3">
     <div class="card-body position-relative">
         <div class="row">
             <div class="col-lg-8">
-                <h3>Detalhes do Quarto</h3>
+                <h3>Detalhes do Evento</h3>
                 <p class="mb-0">Visualização dos detalhes.</p>
             </div>
         </div>
@@ -29,7 +30,7 @@
         <div class="tab-content">
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayFor(model => model.NameBedroom)
+                    @Html.DisplayFor(model => model.NameEvent)
                 </dt>
 
                 <dd>
@@ -43,4 +44,6 @@
         </div>
     </div>
 </div>
+
+
 

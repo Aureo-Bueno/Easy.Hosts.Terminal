@@ -68,12 +68,16 @@ namespace EasyHosts.Terminal.Controllers
             }
         }
 
+
+        //GET: Terminal/Events
         public async Task<ActionResult> Eventos()
         {
             var listEvents = await _context.Event.ToListAsync();
             return View(listEvents);
         }
 
+
+        //GET: Terminal/Events/id
         public async Task<ActionResult> DetalhesEvento(int? id)
         {
             if (id == null)
@@ -93,9 +97,17 @@ namespace EasyHosts.Terminal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Checkin()
+        public async Task<ActionResult> Checkin(CheckinViewModel checkinViewModel)
         {
-            return View();
+            var checkinOfUser = await _context.Booking.Include(x => x.Bedroom)
+                                                      .Include(x => x.User)
+                                                      .Where(x => x.User.Cpf == checkinViewModel.User.Cpf && x.CodeBooking == checkinViewModel.Booking.CodeBooking).FirstOrDefaultAsync();
+            if (checkinOfUser == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Erro no Chekin!" });
+            }
+
+            return View("FinalizarCheckin",checkinOfUser);
         }
 
         public async Task<ActionResult> Checkout()
