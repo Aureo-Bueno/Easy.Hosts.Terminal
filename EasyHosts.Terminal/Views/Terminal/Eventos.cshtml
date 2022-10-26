@@ -1,45 +1,104 @@
 ﻿@model IEnumerable<EasyHosts.Terminal.Models.Event>
-
+@using EasyHosts.Terminal.Models.Enums;
 @{
     ViewData["Title"] = "Eventos";
 }
 
 <header>
     <div class="mt-5">
-        <h1 class="text-center fw-bold">@ViewData["Title"]</h1>
+        <h1 class="text-center fw-bold">@ViewBag.Title</h1>
         <hr class="bg-black" />
     </div>
 </header>
 
-@if (Model.Count() == 0)
-{
-    <div class="card text-center shadow bg-body rounded">
-        <div class="card-header">
-            No momento não temos eventos em nosso sistema!
+<main>
+    <section class="row section-gallery text-center">
+        <div class="title my-5">
+            <h1>Nossas Opções</h1>
         </div>
-        <div class="card-body">
-            <p class="card-text">Volte para o menu de opções.</p>
-            @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
-        </div>
-        <div class="card-footer text-muted">
-            Atualizado em: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
-        </div>
-    </div>
-}
-else
-{
-    @Html.DisplayNameFor(model => model.NameEvent)
+        @if (Model.Count() == 0)
+        {
+            <div class="card text-center shadow bg-body rounded">
+                <div class="card-header">
+                    No momento não temos eventos em nosso sistema!
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Volte para o menu de opções.</p>
+                    @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
+                </div>
+                <div class="card-footer text-muted">
+                    Atualizado em: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h1>Show:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Show)
+                {
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
 
-    foreach (var item in Model)
-    {
-        @Html.DisplayFor(modelItem => item.NameEvent)
-        @Html.DisplayFor(modelItem => item.Organizer)
-        @Html.DisplayFor(modelItem => item.DateEvent)
-        @Html.DisplayFor(modelItem => item.EventsPlace)
-        @Html.DisplayFor(modelItem => item.DescriptionEvent)
-        @Html.DisplayFor(modelItem => item.Attractions)
-        <a class="btn btn-primary" title="Detalhes" href="@Url.Action("DetalhesEvento", "Terminal", new { id = item.Id })">
-            Visualizar Evento
-        </a>
-    }
-}
+            }
+
+            <h1>Comedia:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Comedia)
+                {
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+            <h1>Eventos Religiosos:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.EventosReligiosos)
+                {
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/230/180" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </section>
+</main>

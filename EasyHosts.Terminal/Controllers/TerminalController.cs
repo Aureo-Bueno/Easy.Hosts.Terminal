@@ -1,7 +1,6 @@
 ﻿using EasyHosts.Terminal.Models;
 using EasyHosts.Terminal.Models.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -75,7 +74,6 @@ namespace EasyHosts.Terminal.Controllers
             var listEvents = await _context.Event.ToListAsync();
             return View(listEvents);
         }
-
 
         //GET: Terminal/Events/id
         public async Task<ActionResult> DetalhesEvento(int? id)
