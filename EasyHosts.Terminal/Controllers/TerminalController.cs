@@ -2,7 +2,9 @@
 using EasyHosts.Terminal.Models.ViewModels;
 using System;
 using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -10,7 +12,7 @@ namespace EasyHosts.Terminal.Controllers
 {
     public class TerminalController : Controller
     {
-        private Context _context = new Context();
+        private Context context = new Context();
 
         public async Task<ActionResult> Index()
         {
@@ -25,7 +27,7 @@ namespace EasyHosts.Terminal.Controllers
         //GET: Terminal/Bedroom
         public async Task<ActionResult> Quartos()
         {
-            var listBedroom = await _context.Bedroom.ToListAsync();
+            var listBedroom = await context.Bedroom.ToListAsync();
             return View(listBedroom);
         }
 
@@ -37,7 +39,7 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
             }
 
-            var bedroomDetails = await _context.Bedroom.FindAsync(id);
+            var bedroomDetails = await context.Bedroom.FindAsync(id);
 
             if (bedroomDetails == null)
             {
@@ -54,12 +56,12 @@ namespace EasyHosts.Terminal.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 ViewBag.Search = searchString;
-                var bedrooms = _context.Bedroom.Include(c => c.TypeBedroom)
+                var bedrooms = context.Bedroom.Include(c => c.TypeBedroom)
                                                .Include(e => e.TypeBedroom.AmountOfBed)
                                                .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
                 await bedrooms.ToListAsync();
-                return View("Index",bedrooms);
+                return View("Index", bedrooms);
             }
             else
             {
@@ -71,7 +73,7 @@ namespace EasyHosts.Terminal.Controllers
         //GET: Terminal/Events
         public async Task<ActionResult> Eventos()
         {
-            var listEvents = await _context.Event.ToListAsync();
+            var listEvents = await context.Event.ToListAsync();
             return View(listEvents);
         }
 
@@ -80,14 +82,14 @@ namespace EasyHosts.Terminal.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
+                return RedirectToAction(nameof(Error), new { message = "Evento não encontrado!" });
             }
 
-            var eventDetail= await _context.Event.FirstOrDefaultAsync(f => f.Id == id);
+            var eventDetail = await context.Event.FirstOrDefaultAsync(f => f.Id == id);
 
             if (eventDetail == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not Found!" });
+                return RedirectToAction(nameof(Error), new { message = "Não encontramos o evento solicitado!" });
             }
 
             return View(eventDetail);
@@ -97,7 +99,7 @@ namespace EasyHosts.Terminal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkin(CheckinViewModel checkinViewModel)
         {
-            var checkinOfUser = await _context.Booking.Include(x => x.Bedroom)
+            var checkinOfUser = await context.Booking.Include(x => x.Bedroom)
                                                       .Include(x => x.User)
                                                       .Where(x => x.User.Cpf == checkinViewModel.User.Cpf && x.CodeBooking == checkinViewModel.Booking.CodeBooking).FirstOrDefaultAsync();
             if (checkinOfUser == null)
@@ -105,7 +107,13 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Erro no Chekin!" });
             }
 
-            return View("FinalizarCheckin",checkinOfUser);
+            return View("FinalizarCheckin", checkinOfUser);
+        }
+
+        public async Task<ActionResult> FinalizarCheckin(int checkin)
+        {
+            
+            return View();
         }
 
         public async Task<ActionResult> Checkout()
@@ -115,7 +123,14 @@ namespace EasyHosts.Terminal.Controllers
 
         public ActionResult Error(string message)
         {
-            return View();
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+            };
+            return View(viewModel);
+
         }
     }
 }
+
+

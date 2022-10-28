@@ -1,24 +1,16 @@
 ﻿@model EasyHosts.Terminal.Models.ViewModels.ErrorViewModel
 @{
-    ViewData["Title"] = "Erro 404";
+    ViewBag.Title = "Erro 404";
 }
-<main class="row">
-    <div class="mt-5">
-        <div class="card border-danger mb-5" style="max-width: 18rem;">
-            <div class="card-header"><h1 class="text-danger">@ViewData["Title"]</h1></div>
+
+<main>
+    <div class="d-flex justify-content-center col-sm-12 col-md-12 col-lg-12">
+        <div class="card border-danger m-5">
+            <div class="card-header text-center"><h1 class="text-danger m-2">404 <i class="bi bi-exclamation-triangle text-danger"></i></h1></div>
             <div class="card-body text-danger">
-                <h5 class="card-title">Danger card title</h5>
-                <p class="card-text"><h2 class="text-danger">@*@Model.Message*@</h2></p>
-                <strong>Request ID:</strong> <code>@*@Model.RequestId*@</code>
+                <p class="card-text"><h2 class="m-2">Mensagem: @Model.Message</h2></p>
             </div>
         </div>
     </div>
 </main>
-
-@*@if (Model.ShowRequestId)
-{
-    <p>
-
-    </p>
-}*@
 

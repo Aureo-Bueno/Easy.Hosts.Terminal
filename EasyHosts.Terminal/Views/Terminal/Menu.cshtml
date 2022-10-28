@@ -14,8 +14,8 @@
             <div class="card bg-dark text-white" style="width: 20rem;">
                 <img src="https://picsum.photos/370/370" class="card-img rounded" alt="...">
                 <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-info p-3 rounded">
-                        @Html.ActionLink("Quartos Disponiveis", "Quartos", "Terminal", new { area = "" }, new { @class = "text-center" })
+                    <h5 class="card-title text-center">
+                        <a href="@Url.Action("Quartos", "Terminal", new { area = "" })"><i class="text-dark bi bi-arrow-right-circle-fill fs-1"></i></a>
                     </h5>
                 </div>
             </div>
@@ -39,9 +39,7 @@
                 <img src="https://picsum.photos/371/370" class="card-img rounded" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title text-center bg-info p-3 rounded">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Checkin
-                        </button>
+                        <i class="text-dark bi bi-calendar2-check-fill fs-1" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                     </h5>
                 </div>
             </div>
