@@ -18,7 +18,7 @@ namespace EasyHosts.Terminal.Models
         public string ConfirmPassword { get; set; }
         public int Status { get; set; }
 
-        [DisplayName("CPF do Usuário")]
+        [DisplayName("CPF do Usuário:")]
         public string Cpf { get; set; }
 
         public int PerfilId { get; set; }

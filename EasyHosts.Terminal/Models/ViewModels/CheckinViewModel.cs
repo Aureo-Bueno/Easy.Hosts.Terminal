@@ -10,7 +10,7 @@ namespace EasyHosts.Terminal.Models.ViewModels
     {
         public int CheckinId { get; set; }
 
-        [DisplayName("Booking")]
+        [DisplayName("Reserva")]
         public int BookingId { get; set; }
         public Booking Booking{ get; set; }
 

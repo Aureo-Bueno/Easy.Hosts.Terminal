@@ -9,32 +9,24 @@
         <hr class="bg-black" />
     </div>
 
-    @using (Html.BeginForm("Pesquisar", "Terminal", null, FormMethod.Post))
+    @using (Html.BeginForm("Pesquisar", "Terminal", null, FormMethod.Post, new { @class = "row g-3" }))
     {
         @Html.AntiForgeryToken()
 
-        <div class="row">
-            <div class="col">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @*@Html.TextBox("SearchString")*@
-                <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control" value="@ViewBag.Search" />
-            </div>
-            <div class="col">
-                <input type="submit" value="Pesquisar" class="btn btn-primary" />
-
-            </div>
+        <div class="col">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control" value="@ViewBag.Search" />
+        </div>
+        <div class="col">
+            <input type="submit" value="Pesquisar" class="btn btn-primary" />
 
         </div>
+
     }
 
     <div class="d-flex justify-content-between mt-5">
 
-        @using (Html.BeginForm("Recomendados", "Terminal", null, FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
-
-        }
+        <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
 
         <input type="submit" class="btn btn-outline-info p-3" value="Populares" />
         <input type="submit" class="btn btn-outline-info p-3" value="Melhores Valores" />

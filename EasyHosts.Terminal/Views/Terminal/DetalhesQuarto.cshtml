@@ -4,43 +4,31 @@
 }
 
 <div class="card mb-3">
-    <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../../../assets/img/icons/spot-illustrations/corner-4.png);">
-    </div>
-
     <div class="card-body position-relative">
         <div class="row">
-            <div class="col-lg-8">
-                <h3>Detalhes do Quarto</h3>
-                <p class="mb-0">Visualização dos detalhes.</p>
+            <div class="col-lg-12">
+                <h3 class="text-center">Detalhes do @Html.DisplayFor(model => model.NameBedroom)</h3>
+                <p class="text-center">Descricao: @Html.DisplayFor(model => model.Description)</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card mb-3">
-    <div class="card-header">
-        <div class="row flex-between-end">
-            <div class="col-auto align-self-center">
-                <h5 class="mb-0">Informações</h5>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://picsum.photos/250/350" class="rounded float-start" alt="...">
             </div>
-        </div>
-    </div>
-    <div class="card-body bg-light">
-        <div class="tab-content">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayFor(model => model.NameBedroom)
-                </dt>
+            <div class="col-md-8">
+                <h2 class="p-3 bg-info rounded text-center" >Informacoes</h2>
+                <p>R$ @Html.DisplayFor(model => model.Value)</p>
+                <p>Quantidade de Camas: @Html.DisplayFor(model => model.TypeBedroom.AmountOfBed)</p>
+                <p>Pessoas acomodadas: @Html.DisplayFor(model => model.TypeBedroom.AmountOfPeople)</p>
+                <p>Utensilios: @Html.DisplayFor(model => model.TypeBedroom.ApartmentAmenities)</p>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Id)
-                </dd>
-
-            </dl>
-            <div>
-                @Html.ActionLink("Voltar", "Quartos", "Terminal", new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Voltar", "Quartos", "Terminal", new { @class = "btn btn-secondary mt-5" })
             </div>
         </div>
     </div>
 </div>
-

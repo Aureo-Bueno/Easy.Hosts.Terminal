@@ -1,6 +1,7 @@
 ﻿using EasyHosts.Terminal.Models;
 using EasyHosts.Terminal.Models.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.EnterpriseServices;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace EasyHosts.Terminal.Controllers
         //GET: Terminal/Bedroom
         public async Task<ActionResult> Quartos()
         {
+
             var listBedroom = await context.Bedroom.ToListAsync();
             return View(listBedroom);
         }
@@ -49,7 +51,6 @@ namespace EasyHosts.Terminal.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Pesquisar(FormCollection fc, string searchString)
         {
             ViewBag.Search = "";
@@ -57,15 +58,14 @@ namespace EasyHosts.Terminal.Controllers
             {
                 ViewBag.Search = searchString;
                 var bedrooms = context.Bedroom.Include(c => c.TypeBedroom)
-                                               .Include(e => e.TypeBedroom.AmountOfBed)
                                                .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
-                await bedrooms.ToListAsync();
-                return View("Index", bedrooms);
+                
+                return View("Quartos", await bedrooms.ToListAsync());
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Quartos");
             }
         }
 

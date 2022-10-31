@@ -6,124 +6,103 @@
 
 <header>
     <div class="row col-12 text-center">
-        <div class="col-4">
-            <button class="bg-danger" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-            </button>
-        </div>
-        <div class="col-4">
-            <h1 class="text-center fw-bold">@ViewBag.Title</h1>
-        </div>
-        <div class="col-4">
-            <button class="bg-danger" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
-        </div>
+        <h1 class="text-center fw-bold">@ViewBag.Title</h1>
     </div>
     <hr class="bg-black" />
 </header>
 
 <main>
     <section class="row section-gallery text-center">
-        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="title my-5">
-                    <h1>Nossas Opções</h1>
+
+        <div class="title my-5">
+            <h1>Nossas Opções</h1>
+        </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                <div class="card text-center shadow bg-body rounded m-2">
+                    <div class="card-header">
+                        No momento não temos eventos em nosso sistema!
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Volte para o menu de opções.</p>
+                        @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
+                    </div>
+                    <div class="card-footer text-muted">
+                        Atualizado em: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
+                    </div>
                 </div>
-                @if (Model.Count() == 0)
+            </div>
+        }
+        else
+        {
+            <h1>Show:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Show)
                 {
-                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
-                        <div class="card text-center shadow bg-body rounded m-2">
-                            <div class="card-header">
-                                No momento não temos eventos em nosso sistema!
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">Volte para o menu de opções.</p>
-                                @Html.ActionLink("Voltar", "Menu", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
-                            <div class="card-footer text-muted">
-                                Atualizado em: <strong>@DateTime.Now.ToString("dd/MM/yyyy")</strong>
+                        </div>
+                    </div>
+
+                }
+
+            }
+            <h1>Comedia:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Comedia)
+                {
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 }
-                else
+
+            }
+            <h1>Eventos Religiosos:</h1>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.EventosReligiosos)
                 {
-                    <div class="carousel-item active">
-                        <h1>Show:</h1>
-                        @foreach (var item in Model)
-                        {
-                            if (item.TypeEvent == EventType.Show)
-                            {
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/230/180" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
-
-                            }
-
-                        }
-                    </div>
-                    <div class="carousel-item">
-                        <h1>Comedia:</h1>
-                        @foreach (var item in Model)
-                        {
-                            if (item.TypeEvent == EventType.Comedia)
-                            {
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-
-                        }
-                    </div>
-                    <div class="carousel-item">
-                        <h1>Eventos Religiosos:</h1>
-                        @foreach (var item in Model)
-                        {
-                            if (item.TypeEvent == EventType.EventosReligiosos)
-                            {
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="https://picsum.photos/230/180" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                            </div>
+                        </div>
                     </div>
                 }
-            </div>
+            }
+        }
 
-        </div>
     </section>
 </main>
