@@ -38,14 +38,14 @@ namespace EasyHosts.Terminal.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
+                return RedirectToAction(nameof(Error), new { message = "Quarto não encontrado!" });
             }
 
             var bedroomDetails = await context.Bedroom.FindAsync(id);
 
             if (bedroomDetails == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id Not provided!" });
+                return RedirectToAction(nameof(Error), new { message = "Não encontramos o quarto solicitado!" });
             }
             return View(bedroomDetails);
         }

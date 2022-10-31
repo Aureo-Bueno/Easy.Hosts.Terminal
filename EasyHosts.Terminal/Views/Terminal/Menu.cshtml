@@ -4,58 +4,65 @@
 }
 
 <header>
-    <h1 class="text-center mt-2 mb-2 fw-bold">Menu</h1>
-    <hr class="bg-dark" />
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center mt-2 mb-2 fw-bold">Menu</h1>
+            <hr class="bg-dark" />
+        </div>
+    </div>
 </header>
 
 <main class="d-flex justify-content-around">
     <div class="lineone">
         <div class="mt-3">
-            <div class="card bg-dark text-white" style="width: 20rem;">
-                <img src="https://picsum.photos/370/370" class="card-img rounded" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-info p-3 rounded">
-                        <a href="@Url.Action("Quartos", "Terminal", new { area = "" })"><i class="text-dark bi bi-arrow-right-circle-fill fs-1"></i></a>
-                    </h5>
+            <a href="@Url.Action("Quartos", "Terminal", new { area = "" })">
+                <div class="card bg-dark text-white" style="width: 20rem;">
+                    <img src="~/Uploads/Quartos.jpg" class="card-img rounded" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">
+                        </h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="mt-3">
-            <div class="card bg-dark text-white" style="width: 20rem;">
-                <img src="https://picsum.photos/370/371" class="card-img rounded" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-info p-3 rounded">
-                        @Html.ActionLink("Eventos Disponiveis", "Eventos", "Terminal", new { area = "" }, new { @class = "text-center" })
-                    </h5>
+            <a href="@Url.Action("Eventos", "Terminal", new { area = "" })">
+                <div class="card bg-dark text-white" style="width: 20rem;">
+                    <img src="~/Uploads/Eventos.jpg" class="card-img rounded" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">
+                        </h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="linetwo">
         <div class="mt-3">
-            <div class="card bg-dark text-white" style="width: 20rem;">
-                <img src="https://picsum.photos/371/370" class="card-img rounded" alt="...">
+            <div class="card bg-dark text-white" style="width: 20rem;" data-bs-toggle="modal" data-bs-target="#formularioCheckin">
+                <img src="~/Uploads/Checkin.png" class="card-img rounded" alt="...">
                 <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-info p-3 rounded">
-                        <i class="text-dark bi bi-calendar2-check-fill fs-1" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                    <h5 class="card-title">
+                        <span></span>
                     </h5>
                 </div>
             </div>
         </div>
         <div class="mt-3 mb-1">
-            <div class="card bg-dark text-white" style="width: 20rem;">
-                <img src="https://picsum.photos/370/372" class="card-img rounded" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title text-center bg-danger p-3 rounded">
-                        @Html.ActionLink("Checkout", "Checkout", "Terminal", new { area = "" }, new { @class = "text-center" })
-                    </h5>
+            <a href="@Url.Action("Checkout", "Terminal", new { area = "" })">
+                <div class="card bg-dark text-white" style="width: 20rem;">
+                    <img src="~/Uploads/Checkout.png" class="card-img rounded" alt="...">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">
+                        </h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </main>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formularioCheckin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -68,7 +75,8 @@
                     @Html.AntiForgeryToken()
                     <div class="col-md-12">
                         @Html.LabelFor(model => model.Checkin.Booking.CodeBooking, htmlAttributes: new { @class = "control-label col-md-2" })
-
+                    </div>
+                    <div class="col-md-12">
                         @Html.EditorFor(model => model.Checkin.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Checkin.Booking.CodeBooking, "", new { @class = "text-danger" })
                     </div>

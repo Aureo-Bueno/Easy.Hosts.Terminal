@@ -4,13 +4,6 @@
     ViewData["Title"] = "Eventos";
 }
 
-<header>
-    <div class="row col-12 text-center">
-        <h1 class="text-center fw-bold">@ViewBag.Title</h1>
-    </div>
-    <hr class="bg-black" />
-</header>
-
 <main>
     <section class="row section-gallery text-center">
 
@@ -19,7 +12,7 @@
         </div>
         @if (Model.Count() == 0)
         {
-            <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+            <div class="d-flex justify-content-center col-sm-3 col-md-3 col-lg-3">
                 <div class="card text-center shadow bg-body rounded m-2">
                     <div class="card-header">
                         No momento não temos eventos em nosso sistema!
@@ -36,67 +29,66 @@
         }
         else
         {
-            <h1>Show:</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h1>@ViewData["Title"] de Show</h1>
+                </div>
+            </div>
+
             foreach (var item in Model)
             {
                 if (item.TypeEvent == EventType.Show)
                 {
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
-
                 }
 
             }
-            <h1>Comedia:</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h1>@ViewData["Title"] de Comedia</h1>
+                </div>
+            </div>
             foreach (var item in Model)
             {
                 if (item.TypeEvent == EventType.Comedia)
                 {
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="https://picsum.photos/500/280" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>
                 }
 
             }
-            <h1>Eventos Religiosos:</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h1>@ViewData["Title"] de Religiao</h1>
+                </div>
+            </div>
             foreach (var item in Model)
             {
                 if (item.TypeEvent == EventType.EventosReligiosos)
                 {
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="https://picsum.photos/230/180" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.NameEvent)</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
+
+
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             </div>
                         </div>
                     </div>

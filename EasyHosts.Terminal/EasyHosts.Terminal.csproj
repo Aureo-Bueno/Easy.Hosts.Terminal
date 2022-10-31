@@ -314,7 +314,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\Checkin.png" />
+    <Content Include="Uploads\Checkout.png" />
+    <Content Include="Uploads\Eventos.jpg" />
     <Content Include="Uploads\Logo\EasyHosts.jpg" />
+    <Content Include="Uploads\Quartos.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -333,6 +337,7 @@
     <Content Include="Views\Terminal\DetalhesQuarto.cshtml" />
     <Content Include="Views\Terminal\DetalhesEvento.cshtml" />
     <Content Include="Views\Terminal\FinalizarCheckin.cshtml" />
+    <Content Include="Views\Terminal\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
