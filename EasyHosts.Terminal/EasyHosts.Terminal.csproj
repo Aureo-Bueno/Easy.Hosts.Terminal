@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202210231438333_AddColumnNameTableUser.Designer.cs">
       <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211012011581_AddColumnHashPicture.cs" />
+    <Compile Include="Migrations\202211012011581_AddColumnHashPicture.Designer.cs">
+      <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlbumEvent.cs" />
     <Compile Include="Models\Bedroom.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210231438333_AddColumnNameTableUser.resx">
       <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211012011581_AddColumnHashPicture.resx">
+      <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

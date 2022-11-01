@@ -21,6 +21,7 @@ namespace EasyHosts.Terminal.Models
         [DisplayName("CPF do Usuário:")]
         public string Cpf { get; set; }
 
+        public string Hash { get; set; }
         public int PerfilId { get; set; }
         public virtual Perfil Perfil { get; set; }
     }
