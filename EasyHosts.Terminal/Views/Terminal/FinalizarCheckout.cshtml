@@ -1,21 +1,21 @@
-﻿@model EasyHosts.Terminal.Models.ViewModels.CheckinViewModel
+﻿@model EasyHosts.Terminal.Models.ViewModels.CheckoutViewModel
 
 @{
-    ViewBag.Title = "FinalizarCheckin";
+    ViewBag.Title = "FinalizarCheckout";
 }
 
-<h2>FinalizarCheckin</h2>
+<h2>Finalizar Checkout</h2>
 
 <div>
-    <h4>CheckinViewModel</h4>
+    <h4>CheckoutViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CheckinId)
+            @Html.DisplayNameFor(model => model.ChechoutId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CheckinId)
+            @Html.DisplayFor(model => model.ChechoutId)
         </dd>
 
         <dt>
@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.UsergId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.UsergId)
         </dd>
 
     </dl>

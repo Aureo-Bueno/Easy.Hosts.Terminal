@@ -97,28 +97,62 @@ namespace EasyHosts.Terminal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Checkin(CheckinViewModel checkinViewModel)
+        public async Task<ActionResult> Checkin(CheckinCheckoutViewModel checkinViewModel)
         {
-            var checkinOfUser = await context.Booking.Include(x => x.Bedroom)
-                                                      .Include(x => x.User)
-                                                      .Where(x => x.User.Cpf == checkinViewModel.User.Cpf && x.CodeBooking == checkinViewModel.Booking.CodeBooking).FirstOrDefaultAsync();
+            Booking checkinOfUser = await context.Booking
+                                             .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
+                                             .Include(x => x.User)
+                                             .Include(x => x.Bedroom)
+                                             .FirstOrDefaultAsync();
             if (checkinOfUser == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Erro no Chekin!" });
             }
 
-            return View("FinalizarCheckin", checkinOfUser);
+            return RedirectToAction(nameof(FinalizarCheckin), new { checkin = checkinOfUser });
         }
 
-        public async Task<ActionResult> FinalizarCheckin(int checkin)
+        public async Task<ActionResult> FinalizarCheckin(CheckinViewModel checkinViewModel)
         {
-            
-            return View();
+            //var checkinUserViewModel = new CheckinViewModel
+            //{
+            //   UserId = checkinViewModel.User.Id,
+            //   BookingId = checkinViewModel.Booking.Id,
+            //};
+
+            var finalizarCheckin = await context.Booking.Where(x => x.User.Cpf == checkinViewModel.User.Cpf).FirstOrDefaultAsync();
+
+            return View(finalizarCheckin);
         }
 
-        public async Task<ActionResult> Checkout()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Checkout(CheckinCheckoutViewModel checkoutViewModel)
         {
-            return View();
+            Booking checkoutOfUser = await context.Booking
+                                             .Where(x => x.User.Cpf == checkoutViewModel.Checkout.User.Cpf && x.CodeBooking == checkoutViewModel.Checkout.Booking.CodeBooking)
+                                             .Include(x => x.User)
+                                             .Include(x => x.Bedroom)
+                                             .FirstOrDefaultAsync();
+            if (checkoutOfUser == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Erro no Chekout!" });
+            }
+
+            return RedirectToAction(nameof(FinalizarCheckout), new { checkout = checkoutOfUser });
+        }
+
+        public async Task<ActionResult> FinalizarCheckout(CheckoutViewModel checkoutViewModel)
+        {
+            //var checkinUserViewModel = new CheckinViewModel
+            //{
+            //   UserId = checkinViewModel.User.Id,
+            //   BookingId = checkinViewModel.Booking.Id,
+            //};
+
+            var finalizarCheckin = await context.Booking.Where(x => x.User.Cpf == checkoutViewModel.User.Cpf).FirstOrDefaultAsync();
+
+            return View(finalizarCheckin);
         }
 
         public ActionResult Error(string message)
