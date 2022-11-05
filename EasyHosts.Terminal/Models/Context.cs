@@ -39,6 +39,7 @@ namespace EasyHosts.Terminal.Models
             bedroom.Property(x => x.NameBedroom).HasColumnName("NAME_BEDROOM");
             bedroom.Property(x => x.Value).HasColumnName("VALUE");
             bedroom.Property(x => x.Description).HasColumnName("DESCRIPTION");
+            bedroom.Property(x => x.Picture).HasColumnName("PICTURE");
             bedroom.Property(x => x.Status).HasColumnName("STATUS");
             bedroom.Property(x => x.TypeBedroomId).HasColumnName("TYPE_BEDROOM");
 
@@ -102,6 +103,7 @@ namespace EasyHosts.Terminal.Models
             user.Property(x => x.Status).HasColumnName("STATUS");
             user.Property(x => x.Cpf).HasColumnName("CPF");
             user.Property(x => x.PerfilId).HasColumnName("PERFIL_ID");
+            user.Property(x => x.Hash).HasColumnName("HASH");
 
 
         }

@@ -522,3 +522,4 @@ D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.Co
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.AssemblyReference.cache
+C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddColumnHashPicture.resources

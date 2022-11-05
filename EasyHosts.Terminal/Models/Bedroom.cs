@@ -18,6 +18,7 @@ namespace EasyHosts.Terminal.Models
         [Required]
         [MaxLength(255)]
         public string Description { get; set; }
+        public string Picture { get; set; }
 
         [Required]
         public BedroomStatus Status { get; set; }
