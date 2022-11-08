@@ -103,6 +103,7 @@ namespace EasyHosts.Terminal.Controllers
             Booking checkinOfUser = await context.Booking
                                     .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
                                     .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
+                                    .Where(x => x.Status == BookingStatus.Voucher)
                                     .Include(x => x.User)
                                     .Include(x => x.Bedroom)
                                     .FirstOrDefaultAsync();
@@ -129,6 +130,7 @@ namespace EasyHosts.Terminal.Controllers
             Booking bookingFinal = context.Booking.Find(booking.Id);
 
             bookingFinal.Bedroom.Status = BedroomStatus.Ocupado;
+            bookingFinal.Status = BookingStatus.Checkin;
             context.Entry(bookingFinal).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return View("Menu");
@@ -141,13 +143,10 @@ namespace EasyHosts.Terminal.Controllers
             Booking checkoutOfUser = await context.Booking
                                              .Where(x => x.User.Cpf == checkoutViewModel.Checkout.User.Cpf && x.CodeBooking == checkoutViewModel.Checkout.Booking.CodeBooking)
                                              .Where(x => x.Bedroom.Status == BedroomStatus.Ocupado)
+                                             .Where(x => x.Status == BookingStatus.Checkin)
                                              .Include(x => x.User)
                                              .Include(x => x.Bedroom)
                                              .FirstOrDefaultAsync();
-            if (checkoutOfUser == null)
-            {
-                return RedirectToAction(nameof(Error), new { message = "Erro no Chekout!" });
-            }
 
             return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
         }
@@ -167,10 +166,11 @@ namespace EasyHosts.Terminal.Controllers
         [HttpPost]
         public async Task<ActionResult> FinalizarCheckout([Bind(Include = "Id")] Booking booking)
         {
-            Booking finalBokking = context.Booking.Find(booking.Id);
+            Booking finalBooking = context.Booking.Find(booking.Id);
 
-            finalBokking.Bedroom.Status = BedroomStatus.Disponivel;
-            context.Entry(finalBokking).State = EntityState.Modified;
+            finalBooking.Bedroom.Status = BedroomStatus.Disponivel;
+            finalBooking.Status = BookingStatus.Checkout;
+            context.Entry(finalBooking).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return View("Menu");
         }

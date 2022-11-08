@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyHosts.Terminal.Models.Enums;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,5 +22,7 @@ namespace EasyHosts.Terminal.Models
 
         public int BedroomId { get; set; }
         public virtual Bedroom Bedroom { get; set; }
+
+        public BookingStatus Status { get; set; }
     }
 }
