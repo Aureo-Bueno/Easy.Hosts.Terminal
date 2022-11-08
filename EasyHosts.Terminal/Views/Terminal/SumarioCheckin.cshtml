@@ -3,24 +3,40 @@
     ViewBag.Title = "Sumario do Checkin";
 }
 
-<h2>@ViewBag.Title</h2>
+<h1 class="text-center">@ViewBag.Title</h1>
 
 <div class="container">
-    <p class="text-bg-dark"> @Html.DisplayFor(model => model.User.Name)</p>
-    <p class="text-bg-dark"> @Html.DisplayFor(model => model.ValueBooking)</p>
-    <p class="text-bg-dark"> @Html.DisplayFor(model => model.CodeBooking)</p>
-    <p class="text-bg-dark"> @Html.DisplayFor(model => model.Bedroom.NameBedroom)</p>
+    <div class="row mt-3">
+        <div class="d-flex justify-content-center col-sm-12 col-md-6 col-lg-6">
+            <div class="card p-4">
+                <h2 class=" text-center">Informacoes do Usuario</h2>
+                <div class="card-body">
+                    <p class="">Nome: @Html.DisplayFor(model => model.User.Name)</p>
+                    <p class="">CPF: @Html.DisplayFor(model => model.User.Cpf)</p>
+                    <p class="">Email: @Html.DisplayFor(model => model.User.Email)</p>
+                </div>
+            </div>
 
-    @using (Html.BeginForm("FinalizarCheckin", "Terminal", null, FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.Id)
-        <div class="row">
-            <div class="col-md-12">
-                <input type="submit" value="Checkin" class="btn btn-success" />
+        </div>
+        <div class="d-flex justify-content-center col-sm-12 col-md-6 col-lg-6">
+            <div class="card p-4">
+                <div class="card-body">
+                    <h2 class=" text-center">Informacoes do Quarto</h2>
+                    <p class="">Quarto: @Html.DisplayFor(model => model.Bedroom.NameBedroom)</p>
+                    <p class="">Valor por dia do quarto: R$@Html.DisplayFor(model => model.Bedroom.Value)</p>
+                    <p class="">Valor da reserva: R$@Html.DisplayFor(model => model.ValueBooking)</p>
+                </div>
             </div>
         </div>
+    </div>
 
-    }
+    <div class="d-flex justify-content-center col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("FinalizarCheckin", "Terminal", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <input type="submit" value="Finalizar Checkin" class="btn btn-success p-3" />
 
+        }
+    </div>
 </div>

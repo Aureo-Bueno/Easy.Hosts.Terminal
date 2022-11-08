@@ -4,11 +4,16 @@
 }
 
 <main>
-    <div class="d-flex justify-content-center col-sm-12 col-md-12 col-lg-12">
-        <div class="card border-danger m-5">
-            <div class="card-header text-center"><h1 class="text-danger m-2">404 <i class="bi bi-exclamation-triangle text-danger"></i></h1></div>
-            <div class="card-body text-danger">
-                <p class="card-text"><h2 class="m-2">Mensagem: @Model.Message</h2></p>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="card p-5">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Página não encontrada.</p>
+                <p class="lead">
+                    @Model.Message
+                    @Model.RequestId
+                </p>
+                @Html.ActionLink("Voltar ao Menu", "Index", "Terminal", new { area = "" }, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
