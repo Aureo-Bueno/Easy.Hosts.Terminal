@@ -1,0 +1,26 @@
+﻿@model EasyHosts.Terminal.Models.Booking
+@{
+    ViewBag.Title = "Sumario do Checkin";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="container">
+    <p class="text-bg-dark"> @Html.DisplayFor(model => model.User.Name)</p>
+    <p class="text-bg-dark"> @Html.DisplayFor(model => model.ValueBooking)</p>
+    <p class="text-bg-dark"> @Html.DisplayFor(model => model.CodeBooking)</p>
+    <p class="text-bg-dark"> @Html.DisplayFor(model => model.Bedroom.NameBedroom)</p>
+
+    @using (Html.BeginForm("FinalizarCheckin", "Terminal", null, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" value="Checkin" class="btn btn-success" />
+            </div>
+        </div>
+
+    }
+
+</div>

@@ -341,8 +341,8 @@
     <Content Include="Views\Terminal\DetalhesQuarto.cshtml" />
     <Content Include="Views\Terminal\DetalhesEvento.cshtml" />
     <Content Include="Views\Terminal\Checkout.cshtml" />
-    <Content Include="Views\Terminal\FinalizarCheckout.cshtml" />
-    <Content Include="Views\Terminal\FinalizarCheckin.cshtml" />
+    <Content Include="Views\Terminal\SumarioCheckout.cshtml" />
+    <Content Include="Views\Terminal\SumarioCheckin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

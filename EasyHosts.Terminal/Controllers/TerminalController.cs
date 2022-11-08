@@ -1,4 +1,5 @@
 ﻿using EasyHosts.Terminal.Models;
+using EasyHosts.Terminal.Models.Enums;
 using EasyHosts.Terminal.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace EasyHosts.Terminal.Controllers
                 var bedrooms = context.Bedroom.Include(c => c.TypeBedroom)
                                                .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
-                
+
                 return View("Quartos", await bedrooms.ToListAsync());
             }
             else
@@ -100,29 +101,36 @@ namespace EasyHosts.Terminal.Controllers
         public async Task<ActionResult> Checkin(CheckinCheckoutViewModel checkinViewModel)
         {
             Booking checkinOfUser = await context.Booking
-                                             .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
-                                             .Include(x => x.User)
-                                             .Include(x => x.Bedroom)
-                                             .FirstOrDefaultAsync();
-            if (checkinOfUser == null)
-            {
-                return RedirectToAction(nameof(Error), new { message = "Erro no Chekin!" });
-            }
+                                    .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
+                                    .Include(x => x.User)
+                                    .Include(x => x.Bedroom)
+                                    .FirstOrDefaultAsync();
 
-            return RedirectToAction(nameof(FinalizarCheckin), new { checkin = checkinOfUser });
+            return RedirectToAction("SumarioCheckin", "Terminal", new { checkinOfUser.Id });
         }
 
-        public async Task<ActionResult> FinalizarCheckin(CheckinViewModel checkinViewModel)
+        [HttpGet]
+        public async Task<ActionResult> SumarioCheckin(Booking idBooking)
         {
-            //var checkinUserViewModel = new CheckinViewModel
-            //{
-            //   UserId = checkinViewModel.User.Id,
-            //   BookingId = checkinViewModel.Booking.Id,
-            //};
+            if (idBooking != null)
+            {
+                Booking finalizarCheckin = await context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
 
-            var finalizarCheckin = await context.Booking.Where(x => x.User.Cpf == checkinViewModel.User.Cpf).FirstOrDefaultAsync();
+                return View(finalizarCheckin);
+            }
 
-            return View(finalizarCheckin);
+            return RedirectToAction(nameof(Error), new { message = "Reserva nao encontrada!" });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> FinalizarCheckin([Bind(Include = "Id")] Booking booking)
+        {
+            Booking bookingFinal = context.Booking.Find(booking.Id);
+
+            bookingFinal.Bedroom.Status = BedroomStatus.Ocupado;
+            context.Entry(bookingFinal).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return View("Menu");
         }
 
         [HttpPost]
@@ -139,20 +147,30 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Erro no Chekout!" });
             }
 
-            return RedirectToAction(nameof(FinalizarCheckout), new { checkout = checkoutOfUser });
+            return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
         }
 
-        public async Task<ActionResult> FinalizarCheckout(CheckoutViewModel checkoutViewModel)
+        public async Task<ActionResult> SumarioCheckout(Booking idBooking)
         {
-            //var checkinUserViewModel = new CheckinViewModel
-            //{
-            //   UserId = checkinViewModel.User.Id,
-            //   BookingId = checkinViewModel.Booking.Id,
-            //};
+            if (idBooking != null)
+            {
+                Booking finalizarCheckout = await context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
 
-            var finalizarCheckin = await context.Booking.Where(x => x.User.Cpf == checkoutViewModel.User.Cpf).FirstOrDefaultAsync();
+                return View(finalizarCheckout);
+            }
 
-            return View(finalizarCheckin);
+            return RedirectToAction(nameof(Error), new { message = "Reserva nao encontrada!" });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> FinalizarCheckout([Bind(Include = "Id")] Booking booking)
+        {
+            Booking bookingFinal = context.Booking.Find(booking.Id);
+
+            bookingFinal.Bedroom.Status = BedroomStatus.Disponivel;
+            context.Entry(bookingFinal).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return View("Menu");
         }
 
         public ActionResult Error(string message)
@@ -166,5 +184,3 @@ namespace EasyHosts.Terminal.Controllers
         }
     }
 }
-
-

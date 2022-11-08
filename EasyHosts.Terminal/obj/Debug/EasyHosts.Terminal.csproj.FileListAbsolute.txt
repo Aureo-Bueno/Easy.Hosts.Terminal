@@ -380,6 +380,7 @@ C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\Easy
 C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.CopyComplete
 C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
+C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddColumnHashPicture.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\EasyHosts.Terminal.dll.config
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\EasyHosts.Terminal.dll
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\bin\EasyHosts.Terminal.pdb
@@ -516,10 +517,10 @@ D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migration
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablePayment.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTablesProducts.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddColumnNameTableUser.resources
+D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddColumnHashPicture.resources
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.GenerateResource.cache
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.CoreCompileInputs.cache
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.CopyComplete
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.AssemblyReference.cache
-C:\Users\LGuil\Desktop\TCC\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddColumnHashPicture.resources
