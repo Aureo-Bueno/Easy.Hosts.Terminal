@@ -123,8 +123,6 @@
                 Status = BedroomStatus.Disponivel,
                 TypeBedroomId = 3
             });
-
-
         }
     }
 }

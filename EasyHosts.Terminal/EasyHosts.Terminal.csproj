@@ -232,10 +232,6 @@
     <Compile Include="Migrations\202211012011581_AddColumnHashPicture.Designer.cs">
       <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211081151345_AddColumnStatusTableBooking.cs" />
-    <Compile Include="Migrations\202211081151345_AddColumnStatusTableBooking.Designer.cs">
-      <DependentUpon>202211081151345_AddColumnStatusTableBooking.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlbumEvent.cs" />
     <Compile Include="Models\Bedroom.cs" />
@@ -372,9 +368,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211012011581_AddColumnHashPicture.resx">
       <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211081151345_AddColumnStatusTableBooking.resx">
-      <DependentUpon>202211081151345_AddColumnStatusTableBooking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

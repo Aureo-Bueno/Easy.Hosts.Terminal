@@ -1,42 +1,42 @@
-﻿@model EasyHosts.Terminal.Models.ViewModels.CheckoutViewModel
-
+﻿@model EasyHosts.Terminal.Models.Booking
 @{
-    ViewBag.Title = "FinalizarCheckout";
+    ViewBag.Title = "Sumario do Check-out";
 }
 
-<h2>Finalizar Checkout</h2>
+<h1 class="text-center">@ViewBag.Title</h1>
 
-<div>
-    <h4>CheckoutViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ChechoutId)
-        </dt>
+<div class="container">
+    <div class="row mt-3">
+        <div class="d-flex justify-content-center col-sm-12 col-md-6 col-lg-6">
+            <div class="card p-4">
+                <h2 class=" text-center">Informacoes do Usuario</h2>
+                <div class="card-body">
+                    <p class="">Nome: @Html.DisplayFor(model => model.User.Name)</p>
+                    <p class="">CPF: @Html.DisplayFor(model => model.User.Cpf)</p>
+                    <p class="">Email: @Html.DisplayFor(model => model.User.Email)</p>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ChechoutId)
-        </dd>
+        </div>
+        <div class="d-flex justify-content-center col-sm-12 col-md-6 col-lg-6">
+            <div class="card p-4">
+                <div class="card-body">
+                    <h2 class=" text-center">Informacoes do Quarto</h2>
+                    <p class="">Quarto: @Html.DisplayFor(model => model.Bedroom.NameBedroom)</p>
+                    <p class="">Valor por dia do quarto: R$@Html.DisplayFor(model => model.Bedroom.Value)</p>
+                    <p class="">Valor da reserva: R$@Html.DisplayFor(model => model.ValueBooking)</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingId)
-        </dt>
+    <div class="d-flex justify-content-center col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("FinalizarCheckout", "Terminal", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <input type="submit" value="Finalizar Checkout" class="btn btn-success p-3" />
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UsergId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UsergId)
-        </dd>
-
-    </dl>
+        }
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

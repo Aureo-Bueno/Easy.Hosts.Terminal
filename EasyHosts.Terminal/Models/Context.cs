@@ -52,6 +52,7 @@ namespace EasyHosts.Terminal.Models
             booking.Property(x => x.ValueBooking).HasColumnName("VALUE_BOOKING");
             booking.Property(x => x.UserId).HasColumnName("USER_ID");
             booking.Property(x => x.BedroomId).HasColumnName("BEDROOM_ID");
+            booking.Property(x => x.Status).HasColumnName("STATUS");
 
             var eventBd = mb.Entity<Event>();
             eventBd.ToTable("TB_EVENT");

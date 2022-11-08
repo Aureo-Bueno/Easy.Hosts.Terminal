@@ -14,7 +14,7 @@ namespace EasyHosts.Terminal.Controllers
 {
     public class TerminalController : Controller
     {
-        private Context context = new Context();
+        private Context _context = new Context();
 
         public async Task<ActionResult> Index()
         {
@@ -26,15 +26,15 @@ namespace EasyHosts.Terminal.Controllers
             return View();
         }
 
-        //GET: Terminal/Bedroom
+        //GET: Terminal/Bedroom  LISTAGEM DE QUARTOS
         public async Task<ActionResult> Quartos()
         {
 
-            var listBedroom = await context.Bedroom.ToListAsync();
+            var listBedroom = await _context.Bedroom.ToListAsync();
             return View(listBedroom);
         }
 
-        // GET: Terminal/DetailsBedroom/id
+        // GET: Terminal/DetailsBedroom/id  DETALHES DO QUARTO SELECIONADO NA PAGINA ACIMA
         public async Task<ActionResult> DetalhesQuarto(int? id)
         {
             if (id == null)
@@ -42,7 +42,7 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Quarto não encontrado!" });
             }
 
-            var bedroomDetails = await context.Bedroom.FindAsync(id);
+            var bedroomDetails = await _context.Bedroom.FindAsync(id);
 
             if (bedroomDetails == null)
             {
@@ -51,6 +51,7 @@ namespace EasyHosts.Terminal.Controllers
             return View(bedroomDetails);
         }
 
+        //POST: Terminal/Pesquisar    PESQUISA DO QUARTO
         [HttpPost]
         public async Task<ActionResult> Pesquisar(FormCollection fc, string searchString)
         {
@@ -58,7 +59,7 @@ namespace EasyHosts.Terminal.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 ViewBag.Search = searchString;
-                var bedrooms = context.Bedroom.Include(c => c.TypeBedroom)
+                var bedrooms = _context.Bedroom.Include(c => c.TypeBedroom)
                                                .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
 
@@ -71,14 +72,14 @@ namespace EasyHosts.Terminal.Controllers
         }
 
 
-        //GET: Terminal/Events
+        //GET: Terminal/Events   LISTAGEM DOS EVENTOS
         public async Task<ActionResult> Eventos()
         {
-            var listEvents = await context.Event.ToListAsync();
+            var listEvents = await _context.Event.ToListAsync();
             return View(listEvents);
         }
 
-        //GET: Terminal/Events/id
+        //GET: Terminal/Events/id  DETALHES DO EVENTO SELECIONADO NA PAGINA ACIMA
         public async Task<ActionResult> DetalhesEvento(int? id)
         {
             if (id == null)
@@ -86,7 +87,7 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Evento não encontrado!" });
             }
 
-            var eventDetail = await context.Event.FirstOrDefaultAsync(f => f.Id == id);
+            var eventDetail = await _context.Event.FirstOrDefaultAsync(f => f.Id == id);
 
             if (eventDetail == null)
             {
@@ -96,11 +97,12 @@ namespace EasyHosts.Terminal.Controllers
             return View(eventDetail);
         }
 
+        //POST Terminal/Checkin  CHECKIN DO USUARIO PARA DIRECIONAR PARA A PAGINA DE SUMARIO DO CHECKIN
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkin(CheckinCheckoutViewModel checkinViewModel)
         {
-            Booking checkinOfUser = await context.Booking
+            Booking checkinOfUser = await _context.Booking
                                     .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
                                     .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
                                     .Where(x => x.Status == BookingStatus.Voucher)
@@ -111,12 +113,13 @@ namespace EasyHosts.Terminal.Controllers
             return RedirectToAction("SumarioCheckin", "Terminal", new { checkinOfUser.Id });
         }
 
+        //GET: Terminal/SumariosCheckin MOSTRA AS INFORMACOES DO USUARIO E DO QUARTO PELO ID DO CHECKIN
         [HttpGet]
         public async Task<ActionResult> SumarioCheckin(Booking idBooking)
         {
             if (idBooking != null)
             {
-                Booking finalizarCheckin = await context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
+                Booking finalizarCheckin = await _context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
 
                 return View(finalizarCheckin);
             }
@@ -124,23 +127,25 @@ namespace EasyHosts.Terminal.Controllers
             return RedirectToAction(nameof(Error), new { message = "Reserva não encontrada!" });
         }
 
+        //POST: Terminal/FinalizarCheckin ALTERA O STATUS DA RESERVA E DO QUARTO
         [HttpPost]
         public async Task<ActionResult> FinalizarCheckin([Bind(Include = "Id")] Booking booking)
         {
-            Booking bookingFinal = context.Booking.Find(booking.Id);
+            Booking bookingFinal = _context.Booking.Find(booking.Id);
 
             bookingFinal.Bedroom.Status = BedroomStatus.Ocupado;
             bookingFinal.Status = BookingStatus.Checkin;
-            context.Entry(bookingFinal).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            _context.Entry(bookingFinal).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             return View("Menu");
         }
 
+        //POST Terminal/Checkout  CHECKOUT DO USUARIO PARA DIRECIONAR PARA A PAGINA DE SUMARIO DO CHECKOUT
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkout(CheckinCheckoutViewModel checkoutViewModel)
         {
-            Booking checkoutOfUser = await context.Booking
+            Booking checkoutOfUser = await _context.Booking
                                              .Where(x => x.User.Cpf == checkoutViewModel.Checkout.User.Cpf && x.CodeBooking == checkoutViewModel.Checkout.Booking.CodeBooking)
                                              .Where(x => x.Bedroom.Status == BedroomStatus.Ocupado)
                                              .Where(x => x.Status == BookingStatus.Checkin)
@@ -151,11 +156,14 @@ namespace EasyHosts.Terminal.Controllers
             return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
         }
 
+
+        //GET: Terminal/SumariosCheckout MOSTRA AS INFORMACOES DO USUARIO E DO QUARTO PELO ID DO CHECKOUT
+        [HttpGet]
         public async Task<ActionResult> SumarioCheckout(Booking idBooking)
         {
             if (idBooking != null)
             {
-                Booking finalizarCheckout = await context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
+                Booking finalizarCheckout = await _context.Booking.Where(x => x.Id == idBooking.Id).FirstOrDefaultAsync();
 
                 return View(finalizarCheckout);
             }
@@ -163,18 +171,21 @@ namespace EasyHosts.Terminal.Controllers
             return RedirectToAction(nameof(Error), new { message = "Reserva nao encontrada!" });
         }
 
+        //POST: Terminal/FinalizarCheckout ALTERA O STATUS DA RESERVA E DO QUARTO
         [HttpPost]
         public async Task<ActionResult> FinalizarCheckout([Bind(Include = "Id")] Booking booking)
         {
-            Booking finalBooking = context.Booking.Find(booking.Id);
+            Booking finalBooking = _context.Booking.Find(booking.Id);
 
             finalBooking.Bedroom.Status = BedroomStatus.Disponivel;
             finalBooking.Status = BookingStatus.Checkout;
-            context.Entry(finalBooking).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            finalBooking.CodeBooking = "";
+            _context.Entry(finalBooking).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             return View("Menu");
         }
 
+        //GET: MOSTRA PAGINA DE ERRO AO USUARIO
         public ActionResult Error(string message)
         {
             var viewModel = new ErrorViewModel
