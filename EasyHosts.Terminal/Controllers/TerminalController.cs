@@ -179,7 +179,7 @@ namespace EasyHosts.Terminal.Controllers
 
             finalBooking.Bedroom.Status = BedroomStatus.Disponivel;
             finalBooking.Status = BookingStatus.Checkout;
-            finalBooking.CodeBooking = "";
+            finalBooking.CodeBooking = "000000";
             _context.Entry(finalBooking).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return View("Menu");
