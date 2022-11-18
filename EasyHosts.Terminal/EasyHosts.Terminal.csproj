@@ -212,33 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210221528469_AddTables.cs" />
-    <Compile Include="Migrations\202210221528469_AddTables.Designer.cs">
-      <DependentUpon>202210221528469_AddTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210221635274_AddTablePayment.cs" />
-    <Compile Include="Migrations\202210221635274_AddTablePayment.Designer.cs">
-      <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210231432383_AddTablesProducts.cs" />
-    <Compile Include="Migrations\202210231432383_AddTablesProducts.Designer.cs">
-      <DependentUpon>202210231432383_AddTablesProducts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202210231438333_AddColumnNameTableUser.cs" />
-    <Compile Include="Migrations\202210231438333_AddColumnNameTableUser.Designer.cs">
-      <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211012011581_AddColumnHashPicture.cs" />
-    <Compile Include="Migrations\202211012011581_AddColumnHashPicture.Designer.cs">
-      <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211081855513_AlterTypeColumnCodeBooking.cs" />
-    <Compile Include="Migrations\202211081855513_AlterTypeColumnCodeBooking.Designer.cs">
-      <DependentUpon>202211081855513_AlterTypeColumnCodeBooking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211181720212_AddTableAlbumBedroom.cs" />
-    <Compile Include="Migrations\202211181720212_AddTableAlbumBedroom.Designer.cs">
-      <DependentUpon>202211181720212_AddTableAlbumBedroom.cs</DependentUpon>
+    <Compile Include="Migrations\202211181733032_AddTables.cs" />
+    <Compile Include="Migrations\202211181733032_AddTables.Designer.cs">
+      <DependentUpon>202211181733032_AddTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlbumBedroom.cs" />
@@ -363,26 +339,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210221528469_AddTables.resx">
-      <DependentUpon>202210221528469_AddTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210221635274_AddTablePayment.resx">
-      <DependentUpon>202210221635274_AddTablePayment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210231432383_AddTablesProducts.resx">
-      <DependentUpon>202210231432383_AddTablesProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202210231438333_AddColumnNameTableUser.resx">
-      <DependentUpon>202210231438333_AddColumnNameTableUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211012011581_AddColumnHashPicture.resx">
-      <DependentUpon>202211012011581_AddColumnHashPicture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211081855513_AlterTypeColumnCodeBooking.resx">
-      <DependentUpon>202211081855513_AlterTypeColumnCodeBooking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211181720212_AddTableAlbumBedroom.resx">
-      <DependentUpon>202211181720212_AddTableAlbumBedroom.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211181733032_AddTables.resx">
+      <DependentUpon>202211181733032_AddTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

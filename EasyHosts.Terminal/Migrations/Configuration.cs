@@ -17,107 +17,171 @@
 
         protected override void Seed(Context context)
         {
-            context.Event.AddOrUpdate(
-            p => p.NameEvent,
-            new Models.Event
-            {
-                Id = 1,
-                NameEvent = "Show de Dj",
-                Organizer = "Organizador 01",
-                DateEvent = DateTime.Now,
-                EventsPlace = "Rua Antonio Jose, 28, Aparecida-SP",
-                DescriptionEvent = "Evento de Show",
-                Attractions = "Djs e Mc's",
-                TypeEvent = EventType.Show
-            },
-            new Models.Event
-            {
-                Id = 2,
-                NameEvent = "Show de MC",
-                Organizer = "Organizador 02",
-                DateEvent = DateTime.Now,
-                EventsPlace = "Rua Antonio Moreira, 04, Guaratingueta-SP",
-                DescriptionEvent = "Evento de Show",
-                Attractions = "Djs e Mc's",
-                TypeEvent = EventType.Show
-            },
-            new Models.Event
-            {
-                Id = 3,
-                NameEvent = "Show de Comedia",
-                Organizer = "Organizador 03",
-                DateEvent = DateTime.Now,
-                EventsPlace = "Rua Moreira Luiz, 17, Guaratingueta-SP",
-                DescriptionEvent = "Evento de Comedia",
-                Attractions = "Comediante da Noite",
-                TypeEvent = EventType.Comedia
-            });
+            context.Perfil.AddOrUpdate(
+                   p => p.Description,
+                   new Models.Perfil
+                   {
+                       Id = 1,
+                       Description = "Admin"
+                   },
+                   new Models.Perfil
+                   {
+                       Id = 2,
+                       Description = "Funcionario"
+                   },
+                   new Models.Perfil
+                   {
+                       Id = 3,
+                       Description = "Hospede"
+                   });
+
+
+            context.User.AddOrUpdate(
+                    p => p.Email,
+                    new Models.User
+                    {
+                        Id = 1,
+                        Name = "Aureo Alexandre Bueno Azevedo Filho",
+                        Email = "aureo.bueno@easy.com.br",
+                        Password = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        ConfirmPassword = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        Status = 1,
+                        Cpf = "568.974.261/46",
+                        Hash = "",
+                        PerfilId = 1
+                    },
+                    new Models.User
+                    {
+                        Id = 2,
+                        Name = "Luiz Guilherme Ribeiro",
+                        Email = "luiz.gui@easy.com.br",
+                        Password = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        ConfirmPassword = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        Status = 1,
+                        Cpf = "568.974.261/46",
+                        Hash = "",
+                        PerfilId = 2
+                    },
+                    new Models.User
+                    {
+                        Id = 3,
+                        Name = "Luiz Romao de Carvalho",
+                        Email = "luiz.roman@easy.com.br",
+                        Password = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        ConfirmPassword = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        Status = 0,
+                        Cpf = "568.974.261/46",
+                        Hash = "",
+                        PerfilId = 1
+                    },
+                    new Models.User
+                    {
+                        Id = 4,
+                        Name = "Joao Pedro",
+                        Email = "joao.pedro@easy.com.br",
+                        Password = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        ConfirmPassword = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        Status = 1,
+                        Cpf = "568.974.261/46",
+                        Hash = "",
+                        PerfilId = 1
+                    });
 
             context.TypeBedroom.AddOrUpdate(
-            p => p.AmountOfPeople,
-            new Models.TypeBedroom
-            {
-              Id = 1,
-              AmountOfPeople = 2,
-              AmountOfBed = 1,
-              ApartmentAmenities = "Ar-Condicionado, Frigobar e Fogao.",
-            });
-
-            context.TypeBedroom.AddOrUpdate(
-            p => p.AmountOfPeople,
-            new Models.TypeBedroom
-            {
-                Id = 2,
-                AmountOfPeople = 4,
-                AmountOfBed = 2,
-                ApartmentAmenities = "Ar-Condicionado, Frigobar e Fogao.",
-            });
-
-            context.TypeBedroom.AddOrUpdate(
-            p => p.AmountOfPeople,
-            new Models.TypeBedroom
-            {
-                Id = 3,
-                AmountOfPeople = 5,
-                AmountOfBed = 4,
-                ApartmentAmenities = "Ar-Condicionado, Frigobar e Fogao.",
-            });
+                  p => p.NameTypeBedroom,
+                  new Models.TypeBedroom
+                  {
+                      Id = 1,
+                      NameTypeBedroom = "Solteiro",
+                      AmountOfPeople = 1,
+                      AmountOfBed = 1,
+                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, CAMA SOLTEIRO",
+                  },
+                  new Models.TypeBedroom
+                  {
+                      Id = 2,
+                      NameTypeBedroom = "Casal",
+                      AmountOfPeople = 2,
+                      AmountOfBed = 1,
+                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, CAMA CASAL",
+                  },
+                  new Models.TypeBedroom
+                  {
+                      Id = 3,
+                      NameTypeBedroom = "Familia",
+                      AmountOfPeople = 5,
+                      AmountOfBed = 3,
+                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, 1 CAMA CASAL, 3 CAMAS DE SOLTEIRO",
+                  });
 
             context.Bedroom.AddOrUpdate(
-            p => p.NameBedroom,
-            new Models.Bedroom
-            {
-              Id = 1,
-              NameBedroom = "Quarto de Casal",
-              Value = 350.00M,
-              Description = "Quarto de casal,confortavel e tambem acomodativo.",
-              Status = BedroomStatus.Disponivel,
-              TypeBedroomId = 1
-            });
+                 p => p.NameBedroom,
+                 new Models.Bedroom
+                 {
+                     Id = 1,
+                     NameBedroom = "Quarto Single",
+                     Value = 350,
+                     Description = "Quarto para uma pessoa",
+                     Picture = "https://picsum.photos/200/300",
+                     Status = BedroomStatus.Disponivel,
+                     TypeBedroomId = 1
+                 },
+                 new Models.Bedroom
+                 {
+                     Id = 2,
+                     NameBedroom = "Quarto para Casal",
+                     Value = 650,
+                     Description = "Quarto para duas pessoas",
+                     Picture = "https://picsum.photos/200/300",
+                     Status = BedroomStatus.Disponivel,
+                     TypeBedroomId = 2
+                 },
+                 new Models.Bedroom
+                 {
+                     Id = 3,
+                     NameBedroom = "Quarto Familia",
+                     Value = 1080,
+                     Description = "Quarto para familia",
+                     Picture = "https://picsum.photos/200/300",
+                     Status = BedroomStatus.Disponivel,
+                     TypeBedroomId = 3
+                 },
+                 new Models.Bedroom
+                 {
+                     Id = 4,
+                     NameBedroom = "Quarto Single",
+                     Value = 350,
+                     Description = "Quarto para uma pessoa",
+                     Picture = "https://picsum.photos/200/300",
+                     Status = BedroomStatus.Reservado,
+                     TypeBedroomId = 1
+                 });
 
-            context.Bedroom.AddOrUpdate(
-            p => p.NameBedroom,
-            new Models.Bedroom
-            {
-                Id = 2,
-                NameBedroom = "Quarto para dois Casais",
-                Value = 750.00M,
-                Description = "Qaurto para dois casais,confortavel e tambem acomodativo.",
-                Status = BedroomStatus.Disponivel,
-                TypeBedroomId = 2
-            });
+            context.Booking.AddOrUpdate(
+                 p => p.CodeBooking,
+                 new Models.Booking
+                 {
+                     Id = 1,
+                     CodeBooking = "654321",
+                     DateCheckin = DateTime.Now,
+                     DateCheckout = DateTime.Now,
+                     ValueBooking = 1000,
+                     UserId = 1,
+                     BedroomId = 1,
+                     Status = BookingStatus.Checkin
+                 },
+                 new Models.Booking
+                 {
+                     Id = 2,
+                     CodeBooking = "123456",
+                     DateCheckin = DateTime.Now,
+                     DateCheckout = DateTime.Now,
+                     ValueBooking = 3000,
+                     UserId = 2,
+                     BedroomId = 2,
+                     Status = BookingStatus.Checkin
+                 });
 
-            context.Bedroom.AddOrUpdate(
-            p => p.NameBedroom,
-            new Models.Bedroom
-            {
-                Id = 3,
-                NameBedroom = "Quarto Familia",
-                Value = 1250.00M,
-                Description = "Quarto familia,confortavel e tambem acomodativo.",
-                Status = BedroomStatus.Disponivel,
-                TypeBedroomId = 3
-            });
         }
     }
 }

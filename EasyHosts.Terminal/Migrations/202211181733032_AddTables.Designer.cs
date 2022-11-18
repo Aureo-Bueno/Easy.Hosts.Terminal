@@ -7,18 +7,18 @@ namespace EasyHosts.Terminal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddColumnHashPicture : IMigrationMetadata
+    public sealed partial class AddTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddColumnHashPicture));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202211012011581_AddColumnHashPicture"; }
+            get { return "202211181733032_AddTables"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target
