@@ -525,3 +525,4 @@ D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.dll
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.pdb
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.csproj.AssemblyReference.cache
 D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AlterTypeColumnCodeBooking.resources
+D:\Easy.Hosts.Terminal\EasyHosts.Terminal\obj\Debug\EasyHosts.Terminal.Migrations.AddTableAlbumBedroom.resources

@@ -236,7 +236,12 @@
     <Compile Include="Migrations\202211081855513_AlterTypeColumnCodeBooking.Designer.cs">
       <DependentUpon>202211081855513_AlterTypeColumnCodeBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211181720212_AddTableAlbumBedroom.cs" />
+    <Compile Include="Migrations\202211181720212_AddTableAlbumBedroom.Designer.cs">
+      <DependentUpon>202211181720212_AddTableAlbumBedroom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AlbumBedroom.cs" />
     <Compile Include="Models\AlbumEvent.cs" />
     <Compile Include="Models\Bedroom.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -375,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211081855513_AlterTypeColumnCodeBooking.resx">
       <DependentUpon>202211081855513_AlterTypeColumnCodeBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211181720212_AddTableAlbumBedroom.resx">
+      <DependentUpon>202211181720212_AddTableAlbumBedroom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
