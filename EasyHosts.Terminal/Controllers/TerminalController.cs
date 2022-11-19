@@ -39,14 +39,16 @@ namespace EasyHosts.Terminal.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Quarto não encontrado!" });
+                TempData["MSG"] = "warning|Desculpe, quarto não encontrado!";
+                return RedirectToAction("Quartos");
             }
 
             var bedroomDetails = await _context.Bedroom.FindAsync(id);
 
             if (bedroomDetails == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Não encontramos o quarto solicitado!" });
+                TempData["MSG"] = "error|Desculpe, detalhes não disponiveis!";
+                return RedirectToAction("Quartos");
             }
             return View(bedroomDetails);
         }
@@ -84,14 +86,16 @@ namespace EasyHosts.Terminal.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Evento não encontrado!" });
+                TempData["MSG"] = "warning|Desculpe,não encontramos evento solicitado!";
+                return RedirectToAction("Eventos");
             }
 
             var eventDetail = await _context.Event.FirstOrDefaultAsync(f => f.Id == id);
 
             if (eventDetail == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Não encontramos o evento solicitado!" });
+                TempData["MSG"] = "warning|Desculpe, não encontramos evento solicitado!";
+                return RedirectToAction("Eventos");
             }
 
             return View(eventDetail);
@@ -103,14 +107,20 @@ namespace EasyHosts.Terminal.Controllers
         public async Task<ActionResult> Checkin(CheckinCheckoutViewModel checkinViewModel)
         {
             Booking checkinOfUser = await _context.Booking
-                                    .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
-                                    .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
-                                    .Where(x => x.Status == BookingStatus.Voucher)
-                                    .Include(x => x.User)
-                                    .Include(x => x.Bedroom)
-                                    .FirstOrDefaultAsync();
+                               .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
+                               .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
+                               .Where(x => x.Status == BookingStatus.Voucher)
+                               .Include(x => x.User)
+                               .Include(x => x.Bedroom)
+                               .FirstOrDefaultAsync();
 
-            return RedirectToAction("SumarioCheckin", "Terminal", new { checkinOfUser.Id });
+            if (checkinOfUser != null)
+            {
+                TempData["MSG"] = "success|Dados Verificados com sucesso!";
+                return RedirectToAction("SumarioCheckin", "Terminal", new { checkinOfUser.Id });
+            }
+            TempData["MSG"] = "error|Desculpe, não encontramos a sua reserva, verifique os campos novamente!";
+            return View("Menu", checkinViewModel);
         }
 
         //GET: Terminal/SumariosCheckin MOSTRA AS INFORMACOES DO USUARIO E DO QUARTO PELO ID DO CHECKIN
@@ -133,10 +143,18 @@ namespace EasyHosts.Terminal.Controllers
         {
             Booking bookingFinal = _context.Booking.Find(booking.Id);
 
+            if (bookingFinal == null)
+            {
+                TempData["MSG"] = "error|Reserva não encontrada!";
+                return RedirectToAction("SumarioCheckin");
+            }
+
             bookingFinal.Bedroom.Status = BedroomStatus.Ocupado;
             bookingFinal.Status = BookingStatus.Checkin;
             _context.Entry(bookingFinal).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
+            TempData["MSG"] = "success|Checkin finalizado com sucesso, aproveite a estadia!";
             return View("Menu");
         }
 
@@ -153,7 +171,14 @@ namespace EasyHosts.Terminal.Controllers
                                              .Include(x => x.Bedroom)
                                              .FirstOrDefaultAsync();
 
-            return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
+            if (checkoutOfUser != null)
+            {
+                TempData["MSG"] = "success|Dados Verificados com sucesso!";
+                return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
+            }
+
+            TempData["MSG"] = "error|Desculpe, não encontramos a sua reserva, verifique os campos novamente!";
+            return View("Menu", checkoutViewModel);
         }
 
 
@@ -177,11 +202,19 @@ namespace EasyHosts.Terminal.Controllers
         {
             Booking finalBooking = _context.Booking.Find(booking.Id);
 
+            if (finalBooking == null)
+            {
+                TempData["MSG"] = "error|Reserva não encontrada!";
+                return RedirectToAction("SumarioCheckout");
+            }
+
             finalBooking.Bedroom.Status = BedroomStatus.Disponivel;
             finalBooking.Status = BookingStatus.Checkout;
             finalBooking.CodeBooking = "000000";
             _context.Entry(finalBooking).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
+            TempData["MSG"] = "success|Checkout finalizado com sucesso, boa viagem e volte sempre!";
             return View("Menu");
         }
 
