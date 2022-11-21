@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Pagina nao encontrada";
+}
+
+<main class="">
+    <div class="d-flex align-items-center justify-content-center mb-5">
+        <div class="card p-5">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Página não encontrada.</p>
+                <p class="lead text-center">
+                    Voltar para a pagina de inicio
+                </p>
+                <a href="@Url.Action("Index", "Terminal", new { area = "" })" class="btn btn-light p-2"><i class="bi bi-house-fill text-dark fs-1"></i></a>
+            </div>
+        </div>
+    </div>
+</main>
+

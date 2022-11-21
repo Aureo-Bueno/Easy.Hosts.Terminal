@@ -208,6 +208,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\Function.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\TerminalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -307,6 +308,7 @@
     <Content Include="Uploads\Checkin.png" />
     <Content Include="Uploads\Checkout.png" />
     <Content Include="Uploads\Eventos.jpg" />
+    <Content Include="Uploads\Inicio_01.jpeg" />
     <Content Include="Uploads\Logo\EasyHosts.jpg" />
     <Content Include="Uploads\Quartos.jpg" />
     <Content Include="Web.config" />
@@ -329,6 +331,8 @@
     <Content Include="Views\Terminal\Checkout.cshtml" />
     <Content Include="Views\Terminal\SumarioCheckout.cshtml" />
     <Content Include="Views\Terminal\SumarioCheckin.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
+    <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

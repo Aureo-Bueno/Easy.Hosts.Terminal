@@ -1,12 +1,10 @@
-﻿namespace EasyHosts.Terminal.Migrations
-{
-    using EasyHosts.Terminal.Models;
-    using EasyHosts.Terminal.Models.Enums;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+﻿using EasyHosts.Terminal.Models;
+using EasyHosts.Terminal.Models.Enums;
+using System;
+using System.Data.Entity.Migrations;
 
+namespace EasyHosts.Terminal.Migrations
+{
     internal sealed class Configuration : DbMigrationsConfiguration<Context>
     {
         public Configuration()
@@ -85,6 +83,18 @@
                         Cpf = "568.974.261/46",
                         Hash = "",
                         PerfilId = 1
+                    },
+                    new Models.User
+                    {
+                        Id = 5,
+                        Name = "Alex",
+                        Email = "alex@easy.com.br",
+                        Password = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        ConfirmPassword = "vDDsx1jGNpHGnmbYRjJmcJJL/5YJtf6/OcHobMqPtyeDrV5bcHY1nm1wm8WM03mt4UlZRfhZHph2yyY05DE5pg==",
+                        Status = 1,
+                        Cpf = "568.974.261/46",
+                        Hash = "",
+                        PerfilId = 3
                     });
 
             context.TypeBedroom.AddOrUpdate(
@@ -166,9 +176,9 @@
                      DateCheckin = DateTime.Now,
                      DateCheckout = DateTime.Now,
                      ValueBooking = 1000,
-                     UserId = 1,
+                     UserId = 5,
                      BedroomId = 1,
-                     Status = BookingStatus.Checkin
+                     Status = BookingStatus.Voucher
                  },
                  new Models.Booking
                  {
@@ -177,9 +187,87 @@
                      DateCheckin = DateTime.Now,
                      DateCheckout = DateTime.Now,
                      ValueBooking = 3000,
-                     UserId = 2,
+                     UserId = 5,
                      BedroomId = 2,
-                     Status = BookingStatus.Checkin
+                     Status = BookingStatus.Voucher
+                 });
+
+            context.AlbumEvent.AddOrUpdate(
+                p => p.EventId,
+                new Models.AlbumEvent
+                {
+                    Id = 1,
+                    EventId = 1,
+                    Picture = "https://picsum.photos/200/300"
+                },
+                new Models.AlbumEvent
+                {
+                    Id = 2,
+                    EventId = 1,
+                    Picture = "https://picsum.photos/200/300"
+                });
+
+            context.Event.AddOrUpdate(
+                 p => p.NameEvent,
+                 new Models.Event
+                 {
+                     Id = 1,
+                     NameEvent = "",
+                     Organizer = "",
+                     DateEvent = DateTime.Now,
+                     EventsPlace = "",
+                     Picture = "",
+                     DescriptionEvent = "",
+                     Attractions = "",
+                     TypeEvent = EventType.Show
+                 },
+                 new Models.Event
+                 {
+                     Id = 2,
+                     NameEvent = "",
+                     Organizer = "",
+                     DateEvent = DateTime.Now,
+                     EventsPlace = "",
+                     Picture = "",
+                     DescriptionEvent = "",
+                     Attractions = "",
+                     TypeEvent = EventType.Show
+                 },
+                 new Models.Event
+                 {
+                     Id = 3,
+                     NameEvent = "",
+                     Organizer = "",
+                     DateEvent = DateTime.Now,
+                     EventsPlace = "",
+                     Picture = "",
+                     DescriptionEvent = "",
+                     Attractions = "",
+                     TypeEvent = EventType.Comedia
+                 },
+                 new Models.Event
+                 {
+                     Id = 4,
+                     NameEvent = "",
+                     Organizer = "",
+                     DateEvent = DateTime.Now,
+                     EventsPlace = "",
+                     Picture = "",
+                     DescriptionEvent = "",
+                     Attractions = "",
+                     TypeEvent = EventType.Comedia
+                 },
+                 new Models.Event
+                 {
+                     Id = 5,
+                     NameEvent = "",
+                     Organizer = "",
+                     DateEvent = DateTime.Now,
+                     EventsPlace = "",
+                     Picture = "",
+                     DescriptionEvent = "",
+                     Attractions = "",
+                     TypeEvent = EventType.EventosReligiosos
                  });
 
         }
