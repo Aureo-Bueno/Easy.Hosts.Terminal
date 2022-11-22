@@ -30,8 +30,10 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/mybundle")
+    @Scripts.Render("~/bundles/sweetalert")
     @RenderSection("scripts", required: false)
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     @if (TempData["MSG"] != null)
     {
         <script>
@@ -39,22 +41,24 @@
                 var titulo = "";
                 switch ("@TempData["MSG"].ToString().Split('|')[0]") {
                     case "success":
-                    titulo = "Sucesso";
-                    break;
+                        titulo = "Sucesso";
+                        break;
                     case "warning":
-                    titulo = "Atenção";
-                    break;
+                        titulo = "Atenção";
+                        break;
                     case "error":
-                    titulo = "Erro";
-                    break;
+                        titulo = "Erro";
+                        break;
                     case "info":
-                    titulo = "Informação";
-                    break;
+                        titulo = "Informação";
+                        break;
                 }
                 swal(titulo, "@Html.Raw(TempData["MSG"].ToString().Split('|')[1])", "@TempData["MSG"].ToString().Split('|')[0]");
             });
         </script>
     }
+
+
 
 
 </body>

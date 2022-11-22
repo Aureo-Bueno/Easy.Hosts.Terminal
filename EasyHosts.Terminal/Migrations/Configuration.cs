@@ -105,7 +105,7 @@ namespace EasyHosts.Terminal.Migrations
                       NameTypeBedroom = "Solteiro",
                       AmountOfPeople = 1,
                       AmountOfBed = 1,
-                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, CAMA SOLTEIRO",
+                      ApartmentAmenities = TypeBedroomClass.Prata,
                   },
                   new Models.TypeBedroom
                   {
@@ -113,7 +113,7 @@ namespace EasyHosts.Terminal.Migrations
                       NameTypeBedroom = "Casal",
                       AmountOfPeople = 2,
                       AmountOfBed = 1,
-                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, CAMA CASAL",
+                      ApartmentAmenities = TypeBedroomClass.Ouro,
                   },
                   new Models.TypeBedroom
                   {
@@ -121,7 +121,7 @@ namespace EasyHosts.Terminal.Migrations
                       NameTypeBedroom = "Familia",
                       AmountOfPeople = 5,
                       AmountOfBed = 3,
-                      ApartmentAmenities = "AR-CONDICIONADO, FRIGOBAR, 1 CAMA CASAL, 3 CAMAS DE SOLTEIRO",
+                      ApartmentAmenities = TypeBedroomClass.Diamante,
                   });
 
             context.Bedroom.AddOrUpdate(
@@ -132,8 +132,8 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Single",
                      Value = 350,
                      Description = "Quarto para uma pessoa",
-                     Picture = "https://picsum.photos/200/300",
-                     Status = BedroomStatus.Disponivel,
+                     Picture = "https://picsum.photos/1200/720",
+                     Status = BedroomStatus.Reservado,
                      TypeBedroomId = 1
                  },
                  new Models.Bedroom
@@ -142,8 +142,8 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto para Casal",
                      Value = 650,
                      Description = "Quarto para duas pessoas",
-                     Picture = "https://picsum.photos/200/300",
-                     Status = BedroomStatus.Disponivel,
+                     Picture = "https://picsum.photos/1200/720",
+                     Status = BedroomStatus.Reservado,
                      TypeBedroomId = 2
                  },
                  new Models.Bedroom
@@ -152,8 +152,8 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Familia",
                      Value = 1080,
                      Description = "Quarto para familia",
-                     Picture = "https://picsum.photos/200/300",
-                     Status = BedroomStatus.Disponivel,
+                     Picture = "https://picsum.photos/1200/720",
+                     Status = BedroomStatus.Reservado,
                      TypeBedroomId = 3
                  },
                  new Models.Bedroom
@@ -162,7 +162,7 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Single",
                      Value = 350,
                      Description = "Quarto para uma pessoa",
-                     Picture = "https://picsum.photos/200/300",
+                     Picture = "https://picsum.photos/1200/720",
                      Status = BedroomStatus.Reservado,
                      TypeBedroomId = 1
                  });
@@ -198,13 +198,13 @@ namespace EasyHosts.Terminal.Migrations
                 {
                     Id = 1,
                     EventId = 1,
-                    Picture = "https://picsum.photos/200/300"
+                    Picture = "https://picsum.photos/1200/720"
                 },
                 new Models.AlbumEvent
                 {
                     Id = 2,
                     EventId = 1,
-                    Picture = "https://picsum.photos/200/300"
+                    Picture = "https://picsum.photos/1200/720"
                 });
 
             context.Event.AddOrUpdate(

@@ -43,7 +43,7 @@ namespace EasyHosts.Terminal.Migrations
                         NAME_TYPE_BEDROOM = c.String(nullable: false, maxLength: 255),
                         AMOUNT_OF_PEOPLE = c.Int(nullable: false),
                         AMOUNT_OF_BED = c.Int(nullable: false),
-                        APARTMENT_AMENITIES = c.String(nullable: false, maxLength: 255),
+                        APARTMENT_AMENITIES = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -122,22 +122,6 @@ namespace EasyHosts.Terminal.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.TB_PAYMENT",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        TYPE_PAYMENT = c.Int(nullable: false),
-                        NAME_CARD = c.String(),
-                        CVV = c.Int(nullable: false),
-                        NUMBER_CARD = c.String(),
-                        DATE_EXPIRE = c.DateTime(nullable: false),
-                        USER_ID = c.Int(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.TB_USER", t => t.USER_ID)
-                .Index(t => t.USER_ID);
-            
-            CreateTable(
                 "dbo.TB_PRODUCT",
                 c => new
                     {
@@ -152,14 +136,12 @@ namespace EasyHosts.Terminal.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.TB_PAYMENT", "USER_ID", "dbo.TB_USER");
             DropForeignKey("dbo.TB_BOOKING", "USER_ID", "dbo.TB_USER");
             DropForeignKey("dbo.TB_USER", "PERFIL_ID", "dbo.TB_PERFIL");
             DropForeignKey("dbo.TB_BOOKING", "BEDROOM_ID", "dbo.TB_BEDROOM");
             DropForeignKey("dbo.TB_ALBUM_EVENT", "EVENT_ID", "dbo.TB_EVENT");
             DropForeignKey("dbo.TB_ALBUM_BEDROOM", "BEDROOM_ID", "dbo.TB_BEDROOM");
             DropForeignKey("dbo.TB_BEDROOM", "TYPE_BEDROOM", "dbo.TB_TYPE_BEDROOM");
-            DropIndex("dbo.TB_PAYMENT", new[] { "USER_ID" });
             DropIndex("dbo.TB_USER", new[] { "PERFIL_ID" });
             DropIndex("dbo.TB_BOOKING", new[] { "BEDROOM_ID" });
             DropIndex("dbo.TB_BOOKING", new[] { "USER_ID" });
@@ -167,7 +149,6 @@ namespace EasyHosts.Terminal.Migrations
             DropIndex("dbo.TB_BEDROOM", new[] { "TYPE_BEDROOM" });
             DropIndex("dbo.TB_ALBUM_BEDROOM", new[] { "BEDROOM_ID" });
             DropTable("dbo.TB_PRODUCT");
-            DropTable("dbo.TB_PAYMENT");
             DropTable("dbo.TB_PERFIL");
             DropTable("dbo.TB_USER");
             DropTable("dbo.TB_BOOKING");

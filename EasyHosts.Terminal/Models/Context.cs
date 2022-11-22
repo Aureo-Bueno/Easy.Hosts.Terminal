@@ -17,9 +17,6 @@ namespace EasyHosts.Terminal.Models
 
         public DbSet<Booking> Booking { get; set; }
 
-
-        public DbSet<Payment> Payment { get; set; }
-
         public DbSet<Perfil> Perfil { get; set; }
 
         public DbSet<Product> Product { get; set; }
@@ -75,17 +72,6 @@ namespace EasyHosts.Terminal.Models
             booking.Property(x => x.UserId).HasColumnName("USER_ID");
             booking.Property(x => x.BedroomId).HasColumnName("BEDROOM_ID");
             booking.Property(x => x.Status).HasColumnName("STATUS");
-
-
-            var payment = mb.Entity<Payment>();
-            payment.ToTable("TB_PAYMENT");
-            payment.Property(x => x.Id).HasColumnName("ID");
-            payment.Property(x => x.TypePayment).HasColumnName("TYPE_PAYMENT");
-            payment.Property(x => x.Name).HasColumnName("NAME_CARD");
-            payment.Property(x => x.Cvv).HasColumnName("CVV");
-            payment.Property(x => x.NumberCard).HasColumnName("NUMBER_CARD");
-            payment.Property(x => x.DateExpire).HasColumnName("DATE_EXPIRE");
-            payment.Property(x => x.UserId).HasColumnName("USER_ID");
 
             var perfil = mb.Entity<Perfil>();
             perfil.ToTable("TB_PERFIL");

@@ -9,7 +9,6 @@ namespace EasyHosts.Terminal.Controllers
 {
     public class ErrorController : Controller
     {
-        // GET: Error
         public async Task<ActionResult> Error404()
         {
             Response.StatusCode = 404;

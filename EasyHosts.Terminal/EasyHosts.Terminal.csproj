@@ -213,9 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211181733032_AddTables.cs" />
-    <Compile Include="Migrations\202211181733032_AddTables.Designer.cs">
-      <DependentUpon>202211181733032_AddTables.cs</DependentUpon>
+    <Compile Include="Migrations\202211222043289_AddTables.cs" />
+    <Compile Include="Migrations\202211222043289_AddTables.Designer.cs">
+      <DependentUpon>202211222043289_AddTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlbumBedroom.cs" />
@@ -226,9 +226,8 @@
     <Compile Include="Models\Enums\BedroomStatus.cs" />
     <Compile Include="Models\Enums\BookingStatus.cs" />
     <Compile Include="Models\Enums\EventType.cs" />
-    <Compile Include="Models\Enums\PaymentType.cs" />
+    <Compile Include="Models\Enums\TypeBedroomClass.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\TypeBedroom.cs" />
@@ -305,10 +304,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\SweetAlert\SweetAlert.js" />
+    <Content Include="Uploads\1.png" />
+    <Content Include="Uploads\2.png" />
+    <Content Include="Uploads\3.png" />
+    <Content Include="Uploads\4.png" />
     <Content Include="Uploads\Checkin.png" />
     <Content Include="Uploads\Checkout.png" />
     <Content Include="Uploads\Eventos.jpg" />
-    <Content Include="Uploads\Inicio_01.jpeg" />
     <Content Include="Uploads\Logo\EasyHosts.jpg" />
     <Content Include="Uploads\Quartos.jpg" />
     <Content Include="Web.config" />
@@ -343,8 +346,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202211181733032_AddTables.resx">
-      <DependentUpon>202211181733032_AddTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211222043289_AddTables.resx">
+      <DependentUpon>202211222043289_AddTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

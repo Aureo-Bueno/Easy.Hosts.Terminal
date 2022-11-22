@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using EasyHosts.Terminal.Models.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EasyHosts.Terminal.Models
@@ -21,9 +22,8 @@ namespace EasyHosts.Terminal.Models
         public int AmountOfBed { get; set; }
 
         [Required]
-        [MaxLength(255)]
         [DisplayName("Comodidades")]
-        public string ApartmentAmenities { get; set; }
+        public TypeBedroomClass ApartmentAmenities { get; set; }
 
         
 

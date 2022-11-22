@@ -13,7 +13,7 @@ namespace EasyHosts.Terminal.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202211181733032_AddTables"; }
+            get { return "202211222043289_AddTables"; }
         }
         
         string IMigrationMetadata.Source

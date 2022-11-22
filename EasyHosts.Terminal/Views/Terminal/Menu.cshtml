@@ -84,35 +84,40 @@
     </div>
 </main>
 
-<div class="modal fade" id="formularioCheckin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal-lg" id="formularioCheckin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Fazer Checkin</h1>
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Fazer Checkin</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("Checkin", "Terminal", null, FormMethod.Post, new { @class = "row g-3" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="col-md-12">
-                        @Html.LabelFor(model => model.Checkin.Booking.CodeBooking, htmlAttributes: new { @class = "control-label col-md-2" })
-                    </div>
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Checkin.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Checkin.Booking.CodeBooking, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        @Html.LabelFor(model => model.Checkin.User.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                        @Html.EditorFor(model => model.Checkin.User.Cpf, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Checkin.User.Cpf, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <input type="submit" value="Checkin" class="btn btn-success" />
-                    </div>
-                }
-
+                <div class="container">
+                    @using (Html.BeginForm("Checkin", "Terminal", null, FormMethod.Post, new { @class = "row" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col mb-3">
+                            @Html.LabelFor(model => model.Checkin.Booking.CodeBooking, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Checkin.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkin.Booking.CodeBooking, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col mb-3">
+                            @Html.LabelFor(model => model.Checkin.User.Cpf, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Checkin.User.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkin.User.Cpf, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12 text-lg-end mt-2">
+                            <button type="submit" class="btn btn-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+                                    <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                                </svg>
+                                Checkin
+                            </button>
+                        </div>
+                    }
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -121,7 +126,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="formularioCheckout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal-lg" id="formularioCheckout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,26 +134,32 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("Checkout", "Terminal", null, FormMethod.Post, new { @class = "row g-3" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="col-md-12">
-                        @Html.LabelFor(model => model.Checkout.Booking.CodeBooking, htmlAttributes: new { @class = "control-label col-md-2" })
-                    </div>
-                    <div class="col-md-12">
-                        @Html.EditorFor(model => model.Checkout.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Checkout.Booking.CodeBooking, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        @Html.LabelFor(model => model.Checkout.User.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                        @Html.EditorFor(model => model.Checkout.User.Cpf, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Checkout.User.Cpf, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-12">
-                        <input type="submit" value="Checkout" class="btn btn-success" />
-                    </div>
-                }
+                <div class="container">
+                    @using (Html.BeginForm("Checkout", "Terminal", null, FormMethod.Post, new { @class = "row" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col mb-3">
+                            @Html.LabelFor(model => model.Checkout.Booking.CodeBooking, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Checkout.Booking.CodeBooking, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkout.Booking.CodeBooking, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col mb-3">
+                            @Html.LabelFor(model => model.Checkout.User.Cpf, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Checkout.User.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Checkout.User.Cpf, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-12 text-lg-end mt-2">
+                            <button type="submit" class="btn btn-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+                                    <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                                </svg>
+                                Checkout
+                            </button>
+                        </div>
+                    }
+                </div>
 
             </div>
             <div class="modal-footer">

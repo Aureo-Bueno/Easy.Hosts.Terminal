@@ -2,11 +2,8 @@
 using EasyHosts.Terminal.Models.Enums;
 using EasyHosts.Terminal.Models.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.EnterpriseServices;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -35,19 +32,19 @@ namespace EasyHosts.Terminal.Controllers
         }
 
         // GET: Terminal/DetailsBedroom/id  DETALHES DO QUARTO SELECIONADO NA PAGINA ACIMA
-        public async Task<ActionResult> DetalhesQuarto(int? id)
+        public async Task<ActionResult> DetalhesQuarto(int id)
         {
             if (id == null)
             {
-                TempData["MSG"] = "warning|Desculpe, quarto não encontrado!";
+                TempData["MSG"] = "warning|Desculpe, informe um quarto válido!";
                 return RedirectToAction("Quartos");
             }
 
-            var bedroomDetails = await _context.Bedroom.FindAsync(id);
+            Bedroom bedroomDetails = await _context.Bedroom.FindAsync(id);
 
             if (bedroomDetails == null)
             {
-                TempData["MSG"] = "error|Desculpe, detalhes não disponiveis!";
+                TempData["MSG"] = "error|Desculpe, não encontramos o quarto solicitado!";
                 return RedirectToAction("Quartos");
             }
             return View(bedroomDetails);
@@ -82,7 +79,7 @@ namespace EasyHosts.Terminal.Controllers
         }
 
         //GET: Terminal/Events/id  DETALHES DO EVENTO SELECIONADO NA PAGINA ACIMA
-        public async Task<ActionResult> DetalhesEvento(int? id)
+        public async Task<ActionResult> DetalhesEvento(int id)
         {
             if (id == null)
             {
@@ -90,11 +87,11 @@ namespace EasyHosts.Terminal.Controllers
                 return RedirectToAction("Eventos");
             }
 
-            var eventDetail = await _context.Event.FirstOrDefaultAsync(f => f.Id == id);
+            Event eventDetail = await _context.Event.FindAsync(id);
 
             if (eventDetail == null)
             {
-                TempData["MSG"] = "warning|Desculpe, não encontramos evento solicitado!";
+                TempData["MSG"] = "error|Desculpe, não encontramos evento solicitado!";
                 return RedirectToAction("Eventos");
             }
 
@@ -116,9 +113,9 @@ namespace EasyHosts.Terminal.Controllers
 
             if (checkinOfUser != null)
             {
-                TempData["MSG"] = "success|Dados Verificados com sucesso!";
                 return RedirectToAction("SumarioCheckin", "Terminal", new { checkinOfUser.Id });
             }
+
             TempData["MSG"] = "error|Desculpe, não encontramos a sua reserva, verifique os campos novamente!";
             return View("Menu", checkinViewModel);
         }
@@ -173,7 +170,6 @@ namespace EasyHosts.Terminal.Controllers
 
             if (checkoutOfUser != null)
             {
-                TempData["MSG"] = "success|Dados Verificados com sucesso!";
                 return RedirectToAction("SumarioCheckout", "Terminal", new { checkoutOfUser.Id });
             }
 
@@ -211,6 +207,7 @@ namespace EasyHosts.Terminal.Controllers
             finalBooking.Bedroom.Status = BedroomStatus.Disponivel;
             finalBooking.Status = BookingStatus.Checkout;
             finalBooking.CodeBooking = "000000";
+
             _context.Entry(finalBooking).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 

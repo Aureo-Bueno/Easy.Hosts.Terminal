@@ -11,6 +11,9 @@ namespace EasyHosts.Terminal
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include(
+                        "~/Scripts/SweetAlert.js"));
+
             bundles.Add(new Bundle("~/bundles/mybundle").Include(
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootstrap.bundle.js"));
