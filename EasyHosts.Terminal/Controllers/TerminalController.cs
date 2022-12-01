@@ -236,6 +236,7 @@ namespace EasyHosts.Terminal.Controllers
 
         }
 
+        //GET: PEGA O ID DO QUARTO E CONVERTE OS BYTES DO BANCO PARA O TIPO 'image/jpeg'
         public FileContentResult GetImageBedroom(int id)
         {
             byte[] byteArray = _context.Bedroom.Find(id).Picture;
@@ -243,6 +244,7 @@ namespace EasyHosts.Terminal.Controllers
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }
 
+        //GET: PEGA O ID DO EVENTO E CONVERTE OS BYTES DO BANCO PARA O TIPO 'image/jpeg'
         public FileContentResult GetImageEvent(int id)
         {
             byte[] byteArray = _context.Event.Find(id).Picture;
