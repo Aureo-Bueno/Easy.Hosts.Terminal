@@ -9,8 +9,8 @@ namespace EasyHosts.Terminal.Models
         public int Id { get; set; }
         public int EventId { get; set; }
         public virtual Event Event { get; set; }
-        [MaxLength(100)]
+
         [DisplayName("Fotos")]
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
     }
 }

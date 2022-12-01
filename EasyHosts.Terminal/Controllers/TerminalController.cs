@@ -225,5 +225,12 @@ namespace EasyHosts.Terminal.Controllers
             return View(viewModel);
 
         }
+
+        public FileContentResult GetImageBedroom(int id)
+        {
+            byte[] byteArray = _context.Bedroom.Find(id).Picture;
+
+            return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
+        }
     }
 }

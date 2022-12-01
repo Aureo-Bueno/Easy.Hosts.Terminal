@@ -3,7 +3,7 @@ namespace EasyHosts.Terminal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddTables : DbMigration
+    public partial class AddTablesDataBase : DbMigration
     {
         public override void Up()
         {
@@ -13,7 +13,7 @@ namespace EasyHosts.Terminal.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         BEDROOM_ID = c.Int(nullable: false),
-                        PICTURE = c.String(maxLength: 100),
+                        PICTURE = c.Binary(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.TB_BEDROOM", t => t.BEDROOM_ID, cascadeDelete: true)
@@ -27,9 +27,9 @@ namespace EasyHosts.Terminal.Migrations
                         NAME_BEDROOM = c.String(nullable: false, maxLength: 255),
                         VALUE = c.Decimal(nullable: false, precision: 18, scale: 2),
                         DESCRIPTION = c.String(nullable: false, maxLength: 255),
-                        PICTURE = c.String(),
                         STATUS = c.Int(nullable: false),
                         TYPE_BEDROOM = c.Int(nullable: false),
+                        PICTURE = c.Binary(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.TB_TYPE_BEDROOM", t => t.TYPE_BEDROOM, cascadeDelete: true)
@@ -53,7 +53,7 @@ namespace EasyHosts.Terminal.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         EVENT_ID = c.Int(nullable: false),
-                        PICTURE = c.String(maxLength: 100),
+                        PICTURE = c.Binary(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.TB_EVENT", t => t.EVENT_ID, cascadeDelete: true)
@@ -68,7 +68,7 @@ namespace EasyHosts.Terminal.Migrations
                         ORGANIZER = c.String(maxLength: 100),
                         DATE_EVENT = c.DateTime(nullable: false),
                         EVENTS_PLACE = c.String(maxLength: 150),
-                        PICTURE = c.String(maxLength: 100),
+                        PICTURE = c.Binary(),
                         DESCRIPTION_EVENT = c.String(maxLength: 100),
                         ATTRACTIONS = c.String(maxLength: 100),
                         TYPE_EVENT = c.Int(nullable: false),

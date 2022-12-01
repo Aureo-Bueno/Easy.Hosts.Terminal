@@ -7,13 +7,13 @@ namespace EasyHosts.Terminal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddTables : IMigrationMetadata
+    public sealed partial class AddTablesDataBase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTablesDataBase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202211222043289_AddTables"; }
+            get { return "202212012130311_AddTablesDataBase"; }
         }
         
         string IMigrationMetadata.Source

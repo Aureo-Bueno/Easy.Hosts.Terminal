@@ -213,9 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211222043289_AddTables.cs" />
-    <Compile Include="Migrations\202211222043289_AddTables.Designer.cs">
-      <DependentUpon>202211222043289_AddTables.cs</DependentUpon>
+    <Compile Include="Migrations\202212012130311_AddTablesDataBase.cs" />
+    <Compile Include="Migrations\202212012130311_AddTablesDataBase.Designer.cs">
+      <DependentUpon>202212012130311_AddTablesDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AlbumBedroom.cs" />
@@ -346,8 +346,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202211222043289_AddTables.resx">
-      <DependentUpon>202211222043289_AddTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212012130311_AddTablesDataBase.resx">
+      <DependentUpon>202212012130311_AddTablesDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

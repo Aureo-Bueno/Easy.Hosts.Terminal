@@ -24,9 +24,8 @@ namespace EasyHosts.Terminal.Models
         [DisplayName("Localização")]
         public string EventsPlace { get; set; }
 
-        [MaxLength(100)]
         [DisplayName("Foto")]
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
         public ICollection<AlbumEvent> AlbumEvent { get; set; }
 
         [MaxLength(100, ErrorMessage = "Descricao muito extensa!")]

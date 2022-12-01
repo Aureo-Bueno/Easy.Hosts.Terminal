@@ -132,7 +132,6 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Single",
                      Value = 350,
                      Description = "Quarto para uma pessoa",
-                     Picture = "https://picsum.photos/1200/720",
                      Status = BedroomStatus.Reservado,
                      TypeBedroomId = 1
                  },
@@ -142,7 +141,6 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto para Casal",
                      Value = 650,
                      Description = "Quarto para duas pessoas",
-                     Picture = "https://picsum.photos/1200/720",
                      Status = BedroomStatus.Reservado,
                      TypeBedroomId = 2
                  },
@@ -152,7 +150,6 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Familia",
                      Value = 1080,
                      Description = "Quarto para familia",
-                     Picture = "https://picsum.photos/1200/720",
                      Status = BedroomStatus.Reservado,
                      TypeBedroomId = 3
                  },
@@ -162,7 +159,6 @@ namespace EasyHosts.Terminal.Migrations
                      NameBedroom = "Quarto Single",
                      Value = 350,
                      Description = "Quarto para uma pessoa",
-                     Picture = "https://picsum.photos/1200/720",
                      Status = BedroomStatus.Reservado,
                      TypeBedroomId = 1
                  });
@@ -198,13 +194,11 @@ namespace EasyHosts.Terminal.Migrations
                 {
                     Id = 1,
                     EventId = 1,
-                    Picture = "https://picsum.photos/1200/720"
                 },
                 new Models.AlbumEvent
                 {
                     Id = 2,
                     EventId = 1,
-                    Picture = "https://picsum.photos/1200/720"
                 });
 
             context.Event.AddOrUpdate(
@@ -216,7 +210,6 @@ namespace EasyHosts.Terminal.Migrations
                      Organizer = "",
                      DateEvent = DateTime.Now,
                      EventsPlace = "",
-                     Picture = "",
                      DescriptionEvent = "",
                      Attractions = "",
                      TypeEvent = EventType.Show
@@ -228,7 +221,6 @@ namespace EasyHosts.Terminal.Migrations
                      Organizer = "",
                      DateEvent = DateTime.Now,
                      EventsPlace = "",
-                     Picture = "",
                      DescriptionEvent = "",
                      Attractions = "",
                      TypeEvent = EventType.Show
@@ -240,7 +232,6 @@ namespace EasyHosts.Terminal.Migrations
                      Organizer = "",
                      DateEvent = DateTime.Now,
                      EventsPlace = "",
-                     Picture = "",
                      DescriptionEvent = "",
                      Attractions = "",
                      TypeEvent = EventType.Comedia
@@ -252,7 +243,6 @@ namespace EasyHosts.Terminal.Migrations
                      Organizer = "",
                      DateEvent = DateTime.Now,
                      EventsPlace = "",
-                     Picture = "",
                      DescriptionEvent = "",
                      Attractions = "",
                      TypeEvent = EventType.Comedia
@@ -264,7 +254,6 @@ namespace EasyHosts.Terminal.Migrations
                      Organizer = "",
                      DateEvent = DateTime.Now,
                      EventsPlace = "",
-                     Picture = "",
                      DescriptionEvent = "",
                      Attractions = "",
                      TypeEvent = EventType.EventosReligiosos

@@ -13,8 +13,8 @@ namespace EasyHosts.Terminal.Models
         public int Id { get; set; }
         public int BedroomId { get; set; }
         public virtual Bedroom Bedroom { get; set; }
-        [MaxLength(100)]
+
         [DisplayName("Fotos")]
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
     }
 }

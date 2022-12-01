@@ -23,13 +23,13 @@ namespace EasyHosts.Terminal.Models
         [DisplayName("Descrição")]
         public string Description { get; set; }
 
-        [DisplayName("Foto")]
-        public string Picture { get; set; }
-
         [Required]
         [DisplayName("Status do Quarto")]
         public BedroomStatus Status { get; set; }
         public int TypeBedroomId { get; set; }
         public virtual TypeBedroom TypeBedroom { get; set; }
+
+        [DisplayName("Foto")]
+        public byte[] Picture { get; set; }
     }
 }
