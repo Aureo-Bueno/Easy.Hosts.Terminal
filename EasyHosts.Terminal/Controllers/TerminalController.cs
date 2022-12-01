@@ -52,7 +52,8 @@ namespace EasyHosts.Terminal.Controllers
 
         //POST: Terminal/Pesquisar    PESQUISA DO QUARTO
         [HttpPost]
-        public async Task<ActionResult> Pesquisar(FormCollection fc, string searchString)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Pesquisar(FormCollection fc, string searchString,string melhoresValores)
         {
             ViewBag.Search = "";
             if (!String.IsNullOrEmpty(searchString))
@@ -61,8 +62,15 @@ namespace EasyHosts.Terminal.Controllers
                 var bedrooms = _context.Bedroom.Include(c => c.TypeBedroom)
                                                .Where(c => c.NameBedroom.Contains(searchString)).OrderBy(o => o.NameBedroom);
 
-
                 return View("Quartos", await bedrooms.ToListAsync());
+            }
+            else if (!String.IsNullOrEmpty(melhoresValores))
+            {
+                var bedrooms = _context.Bedroom.Include(c => c.TypeBedroom)
+                                               .OrderBy(o => o.Value)
+                                               .ToListAsync();
+
+                return View("Quartos", await bedrooms);
             }
             else
             {
@@ -107,6 +115,7 @@ namespace EasyHosts.Terminal.Controllers
                                .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking && x.User.PerfilId == 3)
                                .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
                                .Where(x => x.Status == BookingStatus.Voucher)
+                               .Where(x => x.DateCheckin < DateTime.Now)
                                .Include(x => x.User)
                                .Include(x => x.Bedroom)
                                .FirstOrDefaultAsync();
@@ -164,6 +173,7 @@ namespace EasyHosts.Terminal.Controllers
                                              .Where(x => x.User.Cpf == checkoutViewModel.Checkout.User.Cpf && x.CodeBooking == checkoutViewModel.Checkout.Booking.CodeBooking)
                                              .Where(x => x.Bedroom.Status == BedroomStatus.Ocupado)
                                              .Where(x => x.Status == BookingStatus.Checkin)
+                                             .Where(x => x.DateCheckout > DateTime.Now)
                                              .Include(x => x.User)
                                              .Include(x => x.Bedroom)
                                              .FirstOrDefaultAsync();
@@ -229,6 +239,13 @@ namespace EasyHosts.Terminal.Controllers
         public FileContentResult GetImageBedroom(int id)
         {
             byte[] byteArray = _context.Bedroom.Find(id).Picture;
+
+            return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
+        }
+
+        public FileContentResult GetImageEvent(int id)
+        {
+            byte[] byteArray = _context.Event.Find(id).Picture;
 
             return byteArray != null ? new FileContentResult(byteArray, "image/jpeg") : null;
         }

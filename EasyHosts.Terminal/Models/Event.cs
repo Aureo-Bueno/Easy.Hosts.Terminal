@@ -26,7 +26,6 @@ namespace EasyHosts.Terminal.Models
 
         [DisplayName("Foto")]
         public byte[] Picture { get; set; }
-        public ICollection<AlbumEvent> AlbumEvent { get; set; }
 
         [MaxLength(100, ErrorMessage = "Descricao muito extensa!")]
         [DisplayName("Descrição")]

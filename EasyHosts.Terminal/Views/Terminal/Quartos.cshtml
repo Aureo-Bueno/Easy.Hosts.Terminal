@@ -13,24 +13,19 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="col">
+        <div class="col-lg-6 col-md-6 col-12">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <input type="text" placeholder="Pesquisar quartos..." aria-label="Pesquisar Quartos..." name="SearchString" id="SearchString" class="form-control" value="@ViewBag.Search" />
         </div>
-        <div class="col">
-            <input type="submit" value="Pesquisar" class="btn btn-primary" />
-
+        <div class="col-lg-4 col-md-4 col-12">
+            <input type="submit" class="btn btn-outline-info" name="melhoresValores" value="Melhores Valores" />
         </div>
-
+        <div class="col-lg-2 col-md-2 col-12">
+            <input type="submit" value="Pesquisar" class="btn btn-primary" />
+        </div>
     }
 
-    <div class="d-flex justify-content-between mt-5">
 
-        <input type="submit" class="btn btn-outline-info p-3" value="Recomendados" />
-
-        <input type="submit" class="btn btn-outline-info p-3" value="Populares" />
-        <input type="submit" class="btn btn-outline-info p-3" value="Melhores Valores" />
-    </div>
 </header>
 
 <main>

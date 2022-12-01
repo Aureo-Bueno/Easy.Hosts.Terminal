@@ -188,19 +188,6 @@ namespace EasyHosts.Terminal.Migrations
                      Status = BookingStatus.Voucher
                  });
 
-            context.AlbumEvent.AddOrUpdate(
-                p => p.EventId,
-                new Models.AlbumEvent
-                {
-                    Id = 1,
-                    EventId = 1,
-                },
-                new Models.AlbumEvent
-                {
-                    Id = 2,
-                    EventId = 1,
-                });
-
             context.Event.AddOrUpdate(
                  p => p.NameEvent,
                  new Models.Event

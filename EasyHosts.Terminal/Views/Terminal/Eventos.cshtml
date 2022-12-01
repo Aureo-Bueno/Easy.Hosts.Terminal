@@ -29,7 +29,7 @@
         }
         else
         {
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-body">
                     <h1>@ViewData["Title"] de Show</h1>
                 </div>
@@ -39,12 +39,12 @@
             {
                 if (item.TypeEvent == EventType.Show)
                 {
-                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                    <div class="d-flex justify-content-center col-lg-3 col-md-4 col-sm-6 ">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                 {
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do quarto" />
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -81,11 +81,9 @@
             {
                 if (item.TypeEvent == EventType.EventosReligiosos)
                 {
-
-
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img src="https://picsum.photos/230/280" class="card-img-top" alt="...">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do quarto" />
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

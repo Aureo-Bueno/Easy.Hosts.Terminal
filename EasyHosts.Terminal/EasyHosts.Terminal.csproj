@@ -213,13 +213,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212012130311_AddTablesDataBase.cs" />
-    <Compile Include="Migrations\202212012130311_AddTablesDataBase.Designer.cs">
-      <DependentUpon>202212012130311_AddTablesDataBase.cs</DependentUpon>
+    <Compile Include="Migrations\202212012333053_AddTablesDataBase.cs" />
+    <Compile Include="Migrations\202212012333053_AddTablesDataBase.Designer.cs">
+      <DependentUpon>202212012333053_AddTablesDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AlbumBedroom.cs" />
-    <Compile Include="Models\AlbumEvent.cs" />
     <Compile Include="Models\Bedroom.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Context.cs" />
@@ -346,8 +344,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212012130311_AddTablesDataBase.resx">
-      <DependentUpon>202212012130311_AddTablesDataBase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212012333053_AddTablesDataBase.resx">
+      <DependentUpon>202212012333053_AddTablesDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
