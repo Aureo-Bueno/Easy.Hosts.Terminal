@@ -112,7 +112,7 @@ namespace EasyHosts.Terminal.Controllers
         public async Task<ActionResult> Checkin(CheckinCheckoutViewModel checkinViewModel)
         {
             Booking checkinOfUser = await _context.Booking
-                               .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking && x.User.PerfilId == 3)
+                               .Where(x => x.User.Cpf == checkinViewModel.Checkin.User.Cpf && x.CodeBooking == checkinViewModel.Checkin.Booking.CodeBooking)
                                .Where(x => x.Bedroom.Status == BedroomStatus.Reservado)
                                .Where(x => x.Status == BookingStatus.Voucher)
                                .Where(x => x.DateCheckin < DateTime.Now)
@@ -173,7 +173,6 @@ namespace EasyHosts.Terminal.Controllers
                                              .Where(x => x.User.Cpf == checkoutViewModel.Checkout.User.Cpf && x.CodeBooking == checkoutViewModel.Checkout.Booking.CodeBooking)
                                              .Where(x => x.Bedroom.Status == BedroomStatus.Ocupado)
                                              .Where(x => x.Status == BookingStatus.Checkin)
-                                             .Where(x => x.DateCheckout > DateTime.Now)
                                              .Include(x => x.User)
                                              .Include(x => x.Bedroom)
                                              .FirstOrDefaultAsync();
