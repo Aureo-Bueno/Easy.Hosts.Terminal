@@ -6,10 +6,9 @@
 
 <main>
     <section class="row section-gallery text-center">
-        <div class="card p-2 my-5">
-            <h1>Nossas Opções de @ViewData["Title"] <i class="bi bi-calendar-event-fill fs-2 text-dark"></i></h1>
+        <div class="card mb-3 border-0 py-3" style="background-color: #04091d;">
+            <h1 class="fw-lighter" style="color: #f3ae01">Nossas Opções de @ViewData["Title"]</h1>
         </div>
-
         @if (Model.Count() == 0)
         {
             <div class="d-flex align-items-center justify-content-center p-5">
@@ -29,9 +28,9 @@
         }
         else
         {
-            <div class="card mb-5">
-                <div class="card-body">
-                    <h1>@ViewData["Title"] de Show</h1>
+            <div class="card mb-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] de Show</h3>
                 </div>
             </div>
 
@@ -43,7 +42,8 @@
                         <div class="card rounded-3 m-2" style="width: 22rem;">
                             <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
                             <div class="card-body">
-                                <h5 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h5>
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr />
                                 <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
                             </div>
                         </div>
@@ -51,42 +51,65 @@
                 }
 
             }
-            <div class="card">
-                <div class="card-body">
-                    <h1>@ViewData["Title"] de Comedia</h1>
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] de Comédia</h3>
                 </div>
             </div>
             foreach (var item in Model)
             {
-                if (item.TypeEvent == EventType.Comedia)
+                if (item.TypeEvent == EventType.Comédia)
                 {
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do quarto" />
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr />
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
                             </div>
                         </div>
                     </div>
                 }
 
             }
-            <div class="card">
-                <div class="card-body">
-                    <h1>@ViewData["Title"] de Religiao</h1>
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"]</h3>
                 </div>
             </div>
             foreach (var item in Model)
             {
-                if (item.TypeEvent == EventType.EventosReligiosos)
+                if (item.TypeEvent == EventType.Evento)
                 {
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do quarto" />
+                            <img  src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
+                            <div class="card-body"  >
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr />
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] Culturais</h3>
+                </div>
+            </div>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Culturais)
+                {
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr>
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
                             </div>
                         </div>
                     </div>
