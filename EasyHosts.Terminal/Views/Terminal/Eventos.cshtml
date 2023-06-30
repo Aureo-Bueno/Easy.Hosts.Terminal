@@ -58,7 +58,7 @@
             </div>
             foreach (var item in Model)
             {
-                if (item.TypeEvent == EventType.Comédia)
+                if (item.TypeEvent == EventType.Comedia)
                 {
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
@@ -84,10 +84,73 @@
                 {
                     <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
                         <div class="card rounded-3 m-2" style="width: 22rem;">
-                            <img  src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
-                            <div class="card-body"  >
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
+                            <div class="card-body">
                                 <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
                                 <hr />
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] Academicos</h3>
+                </div>
+            </div>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Academicos)
+                {
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
+                            <div class="card-body">
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr>
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] Esportivos</h3>
+                </div>
+            </div>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Esportivos)
+                {
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
+                            <div class="card-body">
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr>
+                                <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="card my-3" style="background-color: #04091d;">
+                <div class="card-body mx-0">
+                    <h3 class="fw-lighter" style="color: #f3ae01">@ViewData["Title"] Corporativos</h3>
+                </div>
+            </div>
+            foreach (var item in Model)
+            {
+                if (item.TypeEvent == EventType.Corporativos)
+                {
+                    <div class="d-flex justify-content-center col-sm-6 col-md-4 col-lg-3">
+                        <div class="card rounded-3 m-2" style="width: 22rem;">
+                            <img src="@Url.Action("GetImageEvent","Terminal", new { id = item.Id })" alt="imagem do evento" />
+                            <div class="card-body">
+                                <h6 class="card-title">Nome Evento: @Html.DisplayFor(modelItem => item.NameEvent)</h6>
+                                <hr>
                                 <p class="card-text">Data do Evento: @Html.DisplayFor(modelItem => item.DateEvent)</p>
                             </div>
                         </div>

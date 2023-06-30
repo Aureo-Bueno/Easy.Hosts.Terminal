@@ -3,8 +3,13 @@
     public enum EventType : int
     {
         Show = 0,
-        Comédia = 1,
+        Comedia = 1,
         Evento = 2,
-        Culturais = 3
+        Academicos = 3,
+        Esportivos = 4,
+        Corporativos = 5,
+        Culturais = 6
+
+
     }
 }
